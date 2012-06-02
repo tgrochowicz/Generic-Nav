@@ -8,7 +8,10 @@ html.no-hs(lang="en")
 		.contentRepeat
 			.content
 				h1  Routing!
-				div(id= 'map')
+				each path in waypoints.routes
+					canvas(style= 'position: absolute; left:0px; right:0px;', id= path.id, class= 'line', width= path.width, height=path.height, data-x1=path.x, data-y1=path.y, data-orient=path.orient, data-floor=path.floor)
+				each floor in waypoints.floors
+					img(data-floor= floor.id, src= floor.img)
 				p Distance: #{waypoints.dist}
 				each waypoint in waypoints.tbt
 					li=waypoint

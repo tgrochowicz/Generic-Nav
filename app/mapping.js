@@ -1,4 +1,4 @@
-var nodes = require("../assets/graph"),
+var nodes = require("../static/js/graph"),
 	graph = {},
 	floors = [];
 

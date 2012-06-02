@@ -1,7 +1,9 @@
 {
 	"floors": {
-		"0": { "description" :"Ground Floor", "image": "map_level1.jpg"},
-		"1": { "description" :"Second Floor", "image": "map_level2.jpg"}
+		"0": { "description" :"First Floor", "image": "map_level1.jpg"},
+		"1": { "description" :"Second Floor", "image": "map_level2.jpg"},
+		"2": { "description" :"Main (Third) Floor", "image": "map_level3.jpg"},
+		"3": { "description" :"Fourth Floor", "image": "map_level4.jpg"}
 	},
 	"endpoints": {
 		"Lobby1": {

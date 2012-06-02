@@ -3,6 +3,9 @@ var nodes = require("../assets/graph"),
 	floors = [];
 
 function calcDist(a, b) {
+	if (a.type === "elevator" || b.type === "elevator") {
+		return 10;
+	}
 	x = a.pos[0] - b.pos[0]
 	y = a.pos[1] - b.pos[1]
 	return Math.sqrt(x * x + y * y)

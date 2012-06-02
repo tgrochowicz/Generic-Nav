@@ -1,6 +1,7 @@
 !!!
 html.no-hs(lang="en")
 	include head
+	meta(id="node", content= node.id)
 	script(type="text/javascript", src="/js/node.js")
 	body
 		include navigation
@@ -11,4 +12,7 @@ html.no-hs(lang="en")
 		img(id= 'location', src= '/images/here.png', style= 'position: absolute; top:' + node.pos[1] + 'px; left:' + node.pos[0] + 'px;' )
 
 		br
-		button Find
+		select(id= 'nodes')
+			for item in nodes
+				option(id= item.id)= item.name
+		button(id= 'find') Find

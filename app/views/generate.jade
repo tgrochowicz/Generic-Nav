@@ -6,6 +6,8 @@ html.no-hs(lang="en")
 		include header
 			include navigation
 		h1  Generate a Waypoint QR Code Poster
-		label(for='nodeid') Node ID:
-		input(id='nodeid') OK
+		select(id= 'nodes')
+			for item in nodes
+				if (item.type != 'junction')
+					option(id= item.id)= item.name
 		button(id='generate') Generate

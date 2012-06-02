@@ -10,7 +10,10 @@ exports.setup = function(app){
 	app.get('/generate', function(req, res){
 		res.render('generate');
 	});
+
 	app.get('/poster/:nodeid', require('./controllers/poster').go);
 
 	app.get('/node/:nodeid', require('./controllers/node').go);
+
+	app.get('/route/:from/:to', require('./controllers/route').go);
 };

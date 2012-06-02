@@ -6,14 +6,15 @@ html.no-hs(lang="en")
 		title Dell Childrens Hospital Navigation
 		meta(name="viewport", content="width=device-width,initial-scale=1")
 		meta(name="description", content="Where do you want to go?")
-		meta(id="nodeid", content= node)
 		link(rel="stylesheet", href="/css/index.css")
 		script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js")
-		script(type="text/javascript", src="/js/poster.js")
+		script(type="text/javascript", src="/js/node.js")
 	body
-		h1  Super fun placeholder for the Node Start Page!
+		h1 Super fun placeholder for the Node Start Page!
 		h2= node.name
-		div(id= 'map')
-			img(src= '/images/' + floor.image, style= 'z-index: 32;')
+
+		img(id= 'map', src= '/images/' + floor.image, style= 'z-index: 0;')
+		img(id= 'location', src= '/images/here.png', style= 'position: absolute; top:' + node.pos[1] + 'px; left:' + node.pos[0] + 'px;' )
+
 		br
 		button Find

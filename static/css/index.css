@@ -3,6 +3,7 @@ h1 {color: red;}
 h2 {color: #446C12; font-size: 1.85em; font-weight: normal; margin-top: 0;}
 
 .clear {clear: both;}
+.hidden {display: none;}
 
 .header {background: url('../images/bgrHeader.png'); width: 956px; height: 199px;}
 	.logo {padding: 35px 0 0 20px;}

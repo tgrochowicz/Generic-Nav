@@ -4,6 +4,9 @@ exports.setup = function(app){
 	app.get('/', function(req, res){
 		res.render('index');
 	});
+
+	app.get('/addnodes', require('./controllers/addNodes').go);
+
 	app.get('/graph', require('./controllers/graph').go)
 
 	//LOL OK

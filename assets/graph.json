@@ -1,0 +1,39 @@
+{
+	"Lobby": {
+		"pos": [0, 0, 1],
+		"name": "Entrance Lobby",
+		"type": "junction",
+		"connections": {
+			"Room1A": {
+				"desc": "Walk down the hallway to the room."
+			},
+			"Elevator1-1": {
+				"desc": "Get in the elevator."
+			}
+		}
+	},
+	"Room1A": {
+		"pos": [1, 1, 1],
+		"name": "Room A",
+		"type": "room",
+		"connections": {
+			"Lobby": {
+				"desc": "Walk up the hallway to the entrance lobby."
+			}
+		}
+	},
+	"Elevator1-1": {
+		"pos": [0, 1, 1],
+		"name": "Elevator 1",
+		"type": "elevator",
+		"connections": {
+			"Entrance": {
+				"desc": "Exit the elevator at the entrance lobby."
+			},
+			"Elevator1-2": {
+				"desc": "Travel to the 2nd floor.",
+				"type": "elevator"
+			}
+		}
+	}
+}

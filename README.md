@@ -5,9 +5,9 @@ Dell Children's Hospital Navigation Project, RHoK Austin 2012
 
 Team
 ----
-Michael Pratt
-Tom Grochowicz
-Stephanie Yang
+* Michael Pratt
+* Tom Grochowicz
+* Stephanie Yang
 
 Installation
 ----

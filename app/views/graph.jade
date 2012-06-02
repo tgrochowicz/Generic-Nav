@@ -1,0 +1,19 @@
+!!!
+html(lang="en")
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+		title DCH-Nav Graph Debug
+		meta(name="viewport", content="width=device-width,initial-scale=1")
+		link(rel="stylesheet", href="/css/index.css")
+	body
+		each node, name in graph
+			p.node
+				h2= name
+				.pos Position: Floor ${node.pos[2]}, (#{node.pos[0]}, #{node.pos[1]})
+				p.connections
+					each info, target in node.connections
+						b #{target}:
+						ul
+							li= info.desc
+			

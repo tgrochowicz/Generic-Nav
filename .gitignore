@@ -1,5 +1,4 @@
 client/dist
-
 lib-cov
 *.seed
 *.log

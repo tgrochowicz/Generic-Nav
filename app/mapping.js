@@ -12,6 +12,7 @@ for (var endpoint in nodes.endpoints) {
 	graph[endpoint] = {
 		"name": node.name,
 		"pos": node.pos,
+		"type": "endpoint",
 		"connections": {}
 	};
 }
@@ -21,6 +22,7 @@ for (var junction in nodes.junctions) {
 	graph[junction] = {
 		"name": junction,
 		"pos": node.pos,
+		"type": "junction",
 		"connections": {}
 	}
 	for (var name in node.connections) {
@@ -35,6 +37,7 @@ for (var elevator in nodes.elevators) {
 	graph[elevator] = {
 		"name": node.name,
 		"pos": node.pos,
+		"type": "elevator",
 		"connections": {}
 	}
 	for (var i in node.exits) {

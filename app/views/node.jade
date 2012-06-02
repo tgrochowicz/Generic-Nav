@@ -14,5 +14,6 @@ html.no-hs(lang="en")
 		br
 		select(id= 'nodes')
 			for item in nodes
-				option(id= item.id)= item.name
+				if (item.type != 'junction')
+					option(id= item.id)= item.name
 		button(id= 'find') Find

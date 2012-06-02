@@ -16,6 +16,14 @@
 			"pos": [0, 1, 1],
 			"name": "Room 2A"	
 		},
+		"Room2b": {
+			"pos": [0, 2, 1],
+			"name": "Room 2B"	
+		},
+		"Surgery": {
+			"pos": [1, 2, 1],
+			"name": "Surgery Ward"
+		},
 		"Cafeteria": {
 			"pos": [340,145,0],
 			"name": "Cafeteria"
@@ -32,8 +40,20 @@
 		"F2-1": {
 			"pos": [0, 0, 1],
 			"connections": {
-				"Room2a": ["Walk down the hallway to room 2A", "Walk down the hallway towards the elevators"]
+				"Room2a": ["Walk down the hallway to room 2A", "Walk down the hallway towards the elevators"],
+				"Room2b": ["Walk down the hallway to room 2B", "Walk down the hallway towards the elevators"],
+				"F2-2": ["Walk down the hallway across from the elevator", "Walk down the hallway towards the elevators"]
 			}
+		},
+		"F2-2": {
+			"pos": [0, 3, 1],
+			"connections": {
+				"Room2a": ["Walk down the hallway to room 2A", "Walk down the hallway away from the elevators"],
+				"Room2b": ["Walk down the hallway to room 2B", "Walk down the hallway away from the elevators"],
+				"F2-1": ["Walk down the hallway towards the elevator", "Walk down the hallway away from the elevators"],
+				"Surgery": ["Walk into the surgery ward.", "Exit the surgery ward."]
+			}
+				
 		}
 	},
 	"elevators": {

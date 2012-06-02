@@ -7,9 +7,7 @@ exports.setup = function(app){
 	app.get('/graph', require('./controllers/graph').go)
 
 	//LOL OK
-	app.get('/generate', function(req, res){
-		res.render('generate');
-	});
+	app.get('/generate', require('./controllers/generate').go );
 
 	app.get('/poster/:nodeid', require('./controllers/poster').go);
 

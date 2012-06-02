@@ -40,7 +40,7 @@ for (var elevator in nodes.elevators) {
 	for (var i in node.exits) {
 		var exit = node.exits[i],
 			junction = graph[exit];
-		graph[elevator].connections[exit] = "Exit the elevator at the " + floors[i];
+		graph[elevator].connections[exit] = "Exit the elevator at the " + floors[i].description;
 		junction.connections[elevator] = "Enter the " + node.name;
 	}
 }

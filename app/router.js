@@ -12,7 +12,5 @@ exports.setup = function(app){
 	});
 	app.get('/poster/:nodeid', require('./controllers/poster').go);
 
-	app.get('/node/:nodeid', function(req, res){
-		res.render('node', {node: req.params.nodeid });
-	});
+	app.get('/node/:nodeid', require('./controllers/node').go);
 };

@@ -13,7 +13,7 @@ html(lang="en")
 				ul
 					li.id= name
 					if floors[node.pos[2]]
-						li.pos #{floors[node.pos[2]]}, (#{node.pos[0]}, #{node.pos[1]})
+						li.pos #{floors[node.pos[2]].description}, (#{node.pos[0]}, #{node.pos[1]})
 					else
 						li.pos (#{node.pos[0]}, #{node.pos[1]})
 					li.connections

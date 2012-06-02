@@ -1,7 +1,7 @@
 {
 	"floors": {
-		"0": "Ground Floor",
-		"1": "Second Floor"
+		"0": { "description" :"Ground Floor", "image": "map_level1.jpg"},
+		"1": { "description" :"Second Floor", "image": "map_level2.jpg"}
 	},
 	"endpoints": {
 		"Lobby1": {

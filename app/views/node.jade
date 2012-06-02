@@ -6,6 +6,7 @@ html.no-hs(lang="en")
 		title Dell Childrens Hospital Navigation
 		meta(name="viewport", content="width=device-width,initial-scale=1")
 		meta(name="description", content="Where do you want to go?")
+		meta(id="node", content= node.id)
 		link(rel="stylesheet", href="/css/index.css")
 		script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js")
 		script(type="text/javascript", src="/js/node.js")
@@ -17,4 +18,7 @@ html.no-hs(lang="en")
 		img(id= 'location', src= '/images/here.png', style= 'position: absolute; top:' + node.pos[1] + 'px; left:' + node.pos[0] + 'px;' )
 
 		br
-		button Find
+		select(id= 'nodes')
+			for item in nodes
+				option(id= item.id)= item.name
+		button(id= 'find') Find

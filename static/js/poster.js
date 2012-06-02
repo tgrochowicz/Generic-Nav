@@ -20,5 +20,6 @@ $(function(){
 	var url = gen_node_url(host, node);
 	$('#qr').attr('src', gen_qr_url(url));
 	$('#url').text(shorten_url(url));
+	$('#url').attr('href', url)
 });
 

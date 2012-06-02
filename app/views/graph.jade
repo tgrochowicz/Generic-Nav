@@ -17,8 +17,9 @@ html(lang="en")
 					else
 						li.pos (#{node.pos[0]}, #{node.pos[1]})
 					li.connections
-						each info, target in node.connections
-							b #{target}:
-							ul
-								li= info
+						ul
+							each info, target in node.connections
+								li
+									b #{target}:
+									span (#{info.dist}) #{info.desc}
 			

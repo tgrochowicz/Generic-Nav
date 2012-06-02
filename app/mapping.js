@@ -2,6 +2,12 @@ var nodes = require("../assets/graph"),
 	graph = {},
 	floors = [];
 
+function calcDist(a, b) {
+	x = a.pos[0] - b.pos[0]
+	y = a.pos[1] - b.pos[1]
+	return x * x + y * y
+}
+
 for (var floor in nodes.floors) {
 	floor = parseInt(floor);
 	floors[floor] = nodes.floors[floor] //I am floored by this code
@@ -26,9 +32,16 @@ for (var junction in nodes.junctions) {
 		"connections": {}
 	}
 	for (var name in node.connections) {
-		var endpoint = graph[name];
-		graph[junction].connections[name] = node.connections[name][0];
-		endpoint.connections[junction] = node.connections[name][1];
+		var endpoint = graph[name],
+			dist = calcDist(node, endpoint);
+		graph[junction].connections[name] = {
+			"desc": node.connections[name][0],
+			"dist": dist
+		}
+		endpoint.connections[junction] = {
+			"desc": node.connections[name][1],
+			"dist": dist
+		}
 	}
 }
 
@@ -43,8 +56,14 @@ for (var elevator in nodes.elevators) {
 	for (var i in node.exits) {
 		var exit = node.exits[i],
 			junction = graph[exit];
-		graph[elevator].connections[exit] = "Exit the elevator at the " + floors[i].description;
-		junction.connections[elevator] = "Enter the " + node.name;
+		graph[elevator].connections[exit] = {
+			"desc": "Exit the elevator at the " + floors[i],
+			"dist": calcDist(graph[elevator], junction) + 0.5
+		}
+		junction.connections[elevator] = {
+			"desc": "Enter the " + node.name,
+			"dist": calcDist(graph[elevator], junction) + 0.5
+		}
 	}
 }
 

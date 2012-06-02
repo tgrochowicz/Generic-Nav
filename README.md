@@ -8,6 +8,7 @@ Team
 * Michael Pratt
 * Tom Grochowicz
 * Stephanie Yang
+* Ben Godwin
 
 Installation
 ----

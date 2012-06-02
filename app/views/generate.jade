@@ -3,6 +3,8 @@ html.no-hs(lang="en")
 	include head
 	script(type="text/javascript", src="/js/generate.js")
 	body
+		include header
+			include navigation
 		h1  Generate a Waypoint QR Code Poster
 		label(for='nodeid') Node ID:
 		input(id='nodeid') OK

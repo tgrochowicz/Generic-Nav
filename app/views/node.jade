@@ -4,13 +4,13 @@ html.no-hs(lang="en")
 	meta(id="node", content= node.id)
 	script(type="text/javascript", src="/js/node.js")
 	body
-		include navigation
+		include header
+			include navigation
 		h1 Super fun placeholder for the Node Start Page!
 		h2= node.name
 
 		img(id= 'map', src= '/images/' + floor.image, style= 'z-index: 0;')
 		img(id= 'location', src= '/images/here.png', style= 'position: absolute; top:' + node.pos[1] + 'px; left:' + node.pos[0] + 'px;' )
-
 		br
 		select(id= 'nodes')
 			for item in nodes

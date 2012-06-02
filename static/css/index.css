@@ -1,11 +1,17 @@
-body {font-family: Arial, Helvetica, sans-serif;}
+body {font-family: Arial, Helvetica, sans-serif; font-size: 14px;}
 h1 {color: red;}
+
+.header {background: url('../images/bgrHeader.png'); width: 956px; height: 199px;}
+	.logo {padding: 35px 0 0 20px;}
+	#navContainer {padding-top: 33px;}
+		#navContainer a:link, #navContainer a:visited, #navContainer a:active {color: #039; text-decoration: none; border-bottom: 1px dotted #039;}
+		#navContainer a:hover {border-bottom-style: solid; border-bottom-color: #ec7320; color: #ec7320;}
+		#navContainer ul {float: left; margin: 0; padding: 0;}
+			#navContainer ul li {float: left; list-style: none; padding: 0 20px 0 0; margin: 0;}
 
 /* Poster Styling */
 #poster h1 {margin-top: 0;}
 #poster h2 {color: #446C12;}
-#poster .header {background: url('../images/bgrHeader.png'); width: 956px; height: 199px;}
-	#poster .logo {padding: 35px 0 0 20px;}
 #poster .content {background: url('../images/bgrDefaultTopWithImage.png') no-repeat; padding: 20px; width: 916px;}
 	#poster .contentRepeat {background: url('../images/bgrDefaultRepeat.png') repeat-y;}
 #poster .footer {background: url('../images/footer.png') repeat-x; width: 956px; height: 57px; position: relative; top: -10px;}

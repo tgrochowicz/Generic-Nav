@@ -5,7 +5,7 @@ var nodes = require("../assets/graph"),
 function calcDist(a, b) {
 	x = a.pos[0] - b.pos[0]
 	y = a.pos[1] - b.pos[1]
-	return x * x + y * y
+	return Math.sqrt(x * x + y * y)
 }
 
 for (var floor in nodes.floors) {
@@ -34,15 +34,18 @@ for (var junction in nodes.junctions) {
 		"connections": {}
 	}
 	for (var name in node.connections) {
-		var endpoint = graph[name],
+		var endpoint = graph[name];
+
+		if (endpoint) {
 			dist = calcDist(node, endpoint);
-		graph[junction].connections[name] = {
-			"desc": node.connections[name][0],
-			"dist": dist
-		}
-		endpoint.connections[junction] = {
-			"desc": node.connections[name][1],
-			"dist": dist
+			graph[junction].connections[name] = {
+				"desc": node.connections[name][0],
+				"dist": dist
+			}
+			endpoint.connections[junction] = {
+				"desc": node.connections[name][1],
+				"dist": dist
+			}
 		}
 	}
 }
@@ -94,6 +97,11 @@ function extendPath(path) {
 	var newPaths = [],
 		tip = path.route[path.route.length - 1],
 		connection;
+
+	if (tip.type === "endpoint" && path.route.length > 1) {
+		// Don't attempt to route through an endpoint.
+		return;
+	}
 	for (var name in tip.connections) {
 		connection = tip.connections[name]
 		var newPath = addToPath(path, name, connection)

@@ -21,7 +21,7 @@
 			"name": "Room 2B"	
 		},
 		"Surgery": {
-			"pos": [1, 2, 1],
+			"pos": [1, 3, 1],
 			"name": "Surgery Ward"
 		},
 		"Cafeteria": {
@@ -42,7 +42,8 @@
 			"connections": {
 				"Room2a": ["Walk down the hallway to room 2A", "Walk down the hallway towards the elevators"],
 				"Room2b": ["Walk down the hallway to room 2B", "Walk down the hallway towards the elevators"],
-				"F2-2": ["Walk down the hallway across from the elevator", "Walk down the hallway towards the elevators"]
+				"F2-2": ["Walk down the hallway across from the elevator", "Walk down the hallway towards the elevators"],
+				"F2-3": ["Walk up the hallway to the Surgery Ward sign", "Walk down the hallway towards the elevators"]
 			}
 		},
 		"F2-2": {
@@ -51,9 +52,15 @@
 				"Room2a": ["Walk down the hallway to room 2A", "Walk down the hallway away from the elevators"],
 				"Room2b": ["Walk down the hallway to room 2B", "Walk down the hallway away from the elevators"],
 				"F2-1": ["Walk down the hallway towards the elevator", "Walk down the hallway away from the elevators"],
-				"Surgery": ["Walk into the surgery ward.", "Exit the surgery ward."]
+				"Surgery": ["Walk into the surgery ward.", "Exit the surgery ward to the south hallway."]
 			}
-				
+		},
+		"F2-3": {
+			"pos": [1, 2, 1],
+			"connections": {
+				"F2-1": ["Walk down the hallway towards the elevator", "Walk up the hallway to the Surgery Ward sign"],
+				"Surgery": ["Walk into the surgery ward.", "Exit the surgery ward to the east hallway."]
+			}
 		}
 	},
 	"elevators": {

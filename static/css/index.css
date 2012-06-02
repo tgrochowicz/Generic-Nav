@@ -1,1 +1,11 @@
+body {font-family: Arial, Helvetica, sans-serif;}
 h1 {color: red;}
+
+/* Poster Styling */
+#poster h1 {margin-top: 0;}
+#poster h2 {color: #446C12;}
+#poster .header {background: url('../images/bgrHeader.png'); width: 956px; height: 199px;}
+	#poster .logo {padding: 35px 0 0 20px;}
+#poster .content {background: url('../images/bgrDefaultTopWithImage.png') no-repeat; padding: 20px; width: 916px;}
+	#poster .contentRepeat {background: url('../images/bgrDefaultRepeat.png') repeat-y;}
+#poster .footer {background: url('../images/footer.png') repeat-x; width: 956px; height: 57px; position: relative; top: -10px;}

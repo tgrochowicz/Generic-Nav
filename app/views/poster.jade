@@ -12,8 +12,15 @@ html.no-hs(lang="en")
 		script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js")
 		script(type="text/javascript", src="/js/poster.js")
 	body
-		h1 Lost? Use your Smartphone to get help!
-		h2 Use your QR Code Reader:
-		img(id='qr', src='')
-		h2 Or visit:
-		h3(id='url')
+		#poster
+			.header
+				.logo
+					img(id='dell', src='/images/logo.png')
+			.contentRepeat
+				.content
+					h1 Lost? Use your Smartphone to get help!
+					h2 Use your QR Code Reader:
+					img(id='qr', src='')
+					h2 Or visit:
+					h3(id='url')
+			.footer

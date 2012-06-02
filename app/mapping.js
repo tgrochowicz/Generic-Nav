@@ -67,5 +67,10 @@ for (var elevator in nodes.elevators) {
 	}
 }
 
+function getRoute (from, to) {
+	return [from, to];
+}
+
 exports.graph = graph;
 exports.floors = floors;
+exports.getRoute = getRoute;

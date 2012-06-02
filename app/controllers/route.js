@@ -7,7 +7,7 @@ exports.go = function(req, res) {
 	to = mapping.graph[to];
 
 	//do something to generate waypoints
-	var waypoints = [from, to];
+	var waypoints = mapping.getRoute(from, to);
 
 	res.render('route', {'waypoints': waypoints});
 }

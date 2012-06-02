@@ -9,11 +9,16 @@ html(lang="en")
 	body
 		each node, name in graph
 			p.node
-				h2= name
-				.pos Position: Floor ${node.pos[2]}, (#{node.pos[0]}, #{node.pos[1]})
-				p.connections
-					each info, target in node.connections
-						b #{target}:
-						ul
-							li= info.desc
+				h2= node.name
+				ul
+					li.id= name
+					if floors[node.pos[2]]
+						li.pos #{floors[node.pos[2]]}, (#{node.pos[0]}, #{node.pos[1]})
+					else
+						li.pos (#{node.pos[0]}, #{node.pos[1]})
+					li.connections
+						each info, target in node.connections
+							b #{target}:
+							ul
+								li= info
 			

@@ -1,12 +1,16 @@
 !!!
-html(lang="en")
+html.no-hs(lang="en")
 	head
 		meta(charset="utf-8")
 		meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
 		title Dell Childrens Hospital Navigation
 		meta(name="viewport", content="width=device-width,initial-scale=1")
 		meta(name="description", content="Where do you want to go?")
+		meta(id="nodeid", content= node)
 		link(rel="stylesheet", href="/css/index.css")
 		script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js")
+		script(type="text/javascript", src="/js/poster.js")
 	body
-		h1  Welcome to Dell Childrens' Hospital
+		h1  Lost? Use your Smartphone to get help!
+		img(src='http://chart.apis.google.com/chart?cht=qr&chs=350x350&chld=L&choe=UTF-8&chl=http%3A%2F%2Ftest.com')
+		div(id='qr')

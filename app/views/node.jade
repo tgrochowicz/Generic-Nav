@@ -6,12 +6,13 @@ html.no-hs(lang="en")
 	body
 		include header
 			include navigation
-		h1 Super fun placeholder for the Node Start Page!
-		h2= node.name
-
+		h2 Your current location: 
+			span.currentLoc= node.name
+		div.clear
 		img(id= 'map', src= '/images/' + floor.image, style= 'z-index: 0;')
 		img(id= 'location', src= '/images/here.png', style= 'position: absolute; top:' + node.pos[1] + 'px; left:' + node.pos[0] + 'px;' )
-		br
+		div.clear
+		h2 Where would you like to go?
 		select(id= 'nodes')
 			for item in nodes
 				if (item.type != 'junction')

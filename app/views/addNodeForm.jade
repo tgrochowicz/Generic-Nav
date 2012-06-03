@@ -8,11 +8,11 @@ html(lang="en")
 			input(type='hidden', name='posy', value=y)
 			input(type='hidden', name='floor', value=floor)
 
-			label(for='id') Unique ID:
-			input(id='id', name='id', disabled='true')= id
+			label(for='id') ID:
+			input(id='id', name='id', value=id, disabled='true')
 
 			label(for='name') Name:
-			input(id='name', name='name')
+			input(id='name', name='name', value=name)
 			label(for='type') Type:
 			select(id='type', name='type')
 				option(value='endpoint') Endpoint

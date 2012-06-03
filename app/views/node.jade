@@ -10,10 +10,7 @@ html.no-hs(lang="en")
 			.content
 				h2 Your current location:
 					span.currentLoc= node.name
-				div.clear
-				img(id= 'map', src= '/images/' + floor.image, style= 'z-index: 0;')
-				img(id= 'location', src= '/images/here.png', style= 'position: absolute; top:' + node.pos[1] + 'px; left:' + node.pos[0] + 'px;' )
-				div.clear
+				canvas(id="mapcanvas",data-bg=floor.image,data-pos=pos)
 				h2 Where would you like to go?
 				select(id= 'nodes')
 					for item in nodes

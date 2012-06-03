@@ -11,7 +11,8 @@ function addNodeFormHandler(req, res) {
 		'floor' : query.z,
 		'floors' : mapping.floors,
 		'graph': mapping.graph,
-		'id': query.id || null}
+		'id': query.id || null,
+		'name': query.name}
 	res.render('addNodeForm', params);
 }
 

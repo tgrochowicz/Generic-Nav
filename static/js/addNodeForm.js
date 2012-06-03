@@ -33,6 +33,12 @@ $(function(){
 	});
 	$('#delete').bind('click', function()
 	{
+		$.ajax({
+		  type: 'POST',
+		  url: '/deletenode',
+		  data: $('#form').serialize(),
+		  success: closeFancyBox
+		});
 		return false;
 	});
 

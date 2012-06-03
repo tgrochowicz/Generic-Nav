@@ -32,3 +32,6 @@ h2 {color: #446C12; font-size: 1.85em; font-weight: normal; margin-top: 0;}
 
 /* Poster Styling */
 #poster h1 {margin-top: 0;}
+
+/* Routing Styling */
+.floorcanvas {margin-left: 10px;}

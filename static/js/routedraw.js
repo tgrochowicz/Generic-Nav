@@ -7,12 +7,14 @@
 			filename = "/images/" + $this.attr('data-bg'),
 			context,
 			turtle = path.shift(),
-			bg = new Image();
+			bg = new Image(),
+			scale = 0.45; //Make this dynamic at some point...
 
 		bg.onload = function() {
-			that.width = this.width;
-			that.height = this.height;
+			that.width = this.width * scale;
+			that.height = this.height * scale;
 			context = that.getContext('2d');
+			context.scale(scale, scale);
 			context.drawImage(bg, 0, 0);
 			context.beginPath();
 			context.lineWidth = 3;

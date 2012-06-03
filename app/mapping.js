@@ -158,6 +158,7 @@ function getRoute (from, to) {
 	return bestPath;
 }
 
+exports.nodes = nodes;
 exports.graph = graph;
 exports.floors = floors;
 exports.getRoute = getRoute;

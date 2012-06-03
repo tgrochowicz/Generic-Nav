@@ -10,6 +10,7 @@ html.no-hs(lang="en")
 			.content
 				h2 Your current location:
 					span.currentLoc= node.name
-				a(id= 'find', href='#') Where would you like to go?
+				a(id= 'find', href='#') Find your destination
+				.clear
 				canvas(id="mapcanvas",data-bg=floor.image,data-pos=pos)
 		include footer

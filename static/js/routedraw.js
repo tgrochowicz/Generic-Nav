@@ -7,30 +7,67 @@
 			path = JSON.parse($this.attr('data-path')),
 			filename = "/images/" + $this.attr('data-bg'),
 			context,
-			turtle = path.shift(),
+			scale = 1,
+			bbox = [50000, 50000, 0, 0];
+
+		//Get bounding box
+		for (var i in path) {
+			var pos = path[i],
+				x = parseInt(pos[0]),
+				y = parseInt(pos[1]);
+				
+			if (x < bbox[0]) {
+				bbox[0] = x;
+			}
+			if (x > bbox[2]) {
+				bbox[2] = x;
+			}
+			if (y < bbox[1]) {
+				bbox[1] = y;
+			}
+			if (y > bbox[3]) {
+				bbox[3] = y;
+			}
+		}
+		
+		var turtle = path.shift(),
 			bg = new Image(),
 			start = new Image(),
 			startpos = turtle,
 			finish = new Image(),
-			finishpos,
-			scale = 1; //Make this dynamic at some point...
+			finishpos; 
 
 		bg.onload = function() {
-			that.width = this.width * scale;
-			that.height = this.height * scale;
+			bbox[0] = bbox[0] - (start.width / 2 + 10) / scale ;
+			bbox[1] = bbox[1] - (start.height + 10) / scale;
+			bbox[2] = (bbox[2] + (start.width / 2 + 10) / scale) - bbox[0];
+			bbox[3] = (bbox[3] + 10 / scale) - bbox[1]
+			that.width = bbox[2] * scale;
+			that.height = bbox[3] * scale;
 			context = that.getContext('2d');
+			context.translate(-bbox[0] * scale, -bbox[1] * scale)
 			context.scale(scale, scale);
 			context.drawImage(bg, 0, 0);
 			context.beginPath();
-			context.lineWidth = 3;
 			context.moveTo(turtle[0], turtle[1]);
 
 			while(turtle = path.shift()) {
 				context.lineTo(turtle[0], turtle[1]);
 				finishpos = turtle;
 			}
+
+			context.scale(1/scale, 1/scale)
+			context.lineWidth = 5;
+			context.strokeStyle = '#000';
 			context.stroke();
-			start.src = index == 0 ? '/images/start.png' : '/images/elevator.png';
+			context.lineWidth = 3;
+			context.strokeStyle = '#0f0';
+			context.stroke();
+			context.lineWidth = 1;
+			context.strokeStyle = '#00f';
+			context.strokeRect(bbox[0], bbox[1], bbox[2] - bbox[0], bbox[3] - bbox[1])
+			context.drawImage(start, startpos[0] * scale - start.width / 2, startpos[1] * scale - start.height + 5);
+			context.drawImage(finish, finishpos[0] * scale - finish.width / 2, finishpos[1] * scale - finish.height + 5);
 		};
 
 		start.onload = function() {
@@ -38,11 +75,11 @@
 		}
 
 		finish.onload = function() {
-			context.drawImage(start, startpos[0] - start.width / 2, startpos[1] - start.height);
-			context.drawImage(finish, finishpos[0] - finish.width / 2, finishpos[1] - finish.height);
+			bg.src = filename
 		}
 
-		bg.src = filename;
+		
+		start.src = index == 0 ? '/images/start.png' : '/images/elevator.png';
 
 	})
 

@@ -10,6 +10,7 @@ html.no-hs(lang="en")
 				h2 Here are your directions!
 
 			each floor, i in waypoints
+				h3=floor.floor.description
 				canvas(id="floorcanvas"+i,data-path=floor.path,data-bg=floor.floor.image).floorcanvas
 
 				ul

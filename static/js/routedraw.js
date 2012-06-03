@@ -8,6 +8,11 @@
 			filename = "/images/" + $this.attr('data-bg'),
 			context,
 			scale = 1,
+			minwidth = 300,
+			maxwidth = 600,
+			minheight = 100,
+			maxheight = 600,
+			diff,
 			bbox = [50000, 50000, 0, 0];
 
 		//Get bounding box
@@ -28,6 +33,17 @@
 			if (y > bbox[3]) {
 				bbox[3] = y;
 			}
+		}
+
+		diff = Math.abs(bbox[2] - bbox[0]);
+		if (diff < minwidth) {
+			bbox[2] += (minwidth - diff) / 2;
+			bbox[0] -= (minwidth - diff) / 2;
+		}
+		diff = Math.abs(bbox[3] - bbox[1]);
+		if (diff < minheight) {
+			bbox[3] += (minheight - diff) / 2;
+			bbox[1] -= (minheight - diff) / 2;
 		}
 		
 		var turtle = path.shift(),
@@ -65,7 +81,6 @@
 			context.stroke();
 			context.lineWidth = 1;
 			context.strokeStyle = '#00f';
-			context.strokeRect(bbox[0], bbox[1], bbox[2] - bbox[0], bbox[3] - bbox[1])
 
 			if (startpos[1] < finishpos[1]) {
 				context.drawImage(start, startpos[0] * scale - start.width / 2, startpos[1] * scale - start.height + 5);

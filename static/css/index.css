@@ -45,7 +45,7 @@ h2 {color: #446C12; font-size: 1.85em; font-weight: normal; margin-top: 0; clear
 #poster h1 {margin-top: 0;}
 
 /* Routing Styling */
-.floorcanvas {margin-left: 10px;}
+.floorcanvas {margin-left: 10px; border: 2px solid gray;}
 
 
 @media only screen and (device-width: 768px) and (orientation: landscape) {

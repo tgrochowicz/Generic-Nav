@@ -172,6 +172,15 @@ function getRoute (from, to) {
 			else if(current.pos[1] === future.pos[1]) orient="horiz";
 			else orient = "up";
 
+			var floor;
+
+			if (current.pos.length == 3){
+				floor = current.pos[2];
+			}
+			else
+			{
+				floor = future.pos[2];
+			}
 
 
 			var route = {
@@ -181,8 +190,9 @@ function getRoute (from, to) {
 				id: current.name + future.name,
 				width: Math.abs(future.pos[0] - current.pos[0]),
 				height: Math.abs(future.pos[1] - current.pos[1]),
-				floor: current.pos[2]
+				floor: floor
 			};
+			console.log(route);
 			routes.push(route);
 		}
 
@@ -206,8 +216,6 @@ function getRoute (from, to) {
 
 	bestPath.routes = generateRoutes(bestPath.route);
 	bestPath.floors = generateFloors(bestPath.routes);
-
-	console.log("Paths", paths)
 	return bestPath;
 }
 

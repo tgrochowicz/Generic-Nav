@@ -18,7 +18,7 @@ h2 {color: #446C12; font-size: 1.85em; font-weight: normal; margin-top: 0;}
 	.forms label {font-weight: bold; display: block;}
 	.forms label.disabled {color: #999;}
 	.forms input {width: 250px;}
-	.forms input:disabled {color: #999;}
+	.forms input[readonly] {color: #999;}
 		.formLine {padding-bottom: 15px;}
 		.formButtons {padding-top: 40px;}
 	#floorSelect {}

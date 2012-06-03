@@ -15,7 +15,7 @@
 			var pos = path[i],
 				x = parseInt(pos[0]),
 				y = parseInt(pos[1]);
-				
+
 			if (x < bbox[0]) {
 				bbox[0] = x;
 			}
@@ -66,8 +66,14 @@
 			context.lineWidth = 1;
 			context.strokeStyle = '#00f';
 			context.strokeRect(bbox[0], bbox[1], bbox[2] - bbox[0], bbox[3] - bbox[1])
-			context.drawImage(start, startpos[0] * scale - start.width / 2, startpos[1] * scale - start.height + 5);
-			context.drawImage(finish, finishpos[0] * scale - finish.width / 2, finishpos[1] * scale - finish.height + 5);
+
+			if (startpos[1] < finishpos[1]) {
+				context.drawImage(start, startpos[0] * scale - start.width / 2, startpos[1] * scale - start.height + 5);
+				context.drawImage(finish, finishpos[0] * scale - finish.width / 2, finishpos[1] * scale - finish.height + 5);
+			} else {
+				context.drawImage(finish, finishpos[0] * scale - finish.width / 2, finishpos[1] * scale - finish.height + 5);
+				context.drawImage(start, startpos[0] * scale - start.width / 2, startpos[1] * scale - start.height + 5);
+			}
 		};
 
 		start.onload = function() {

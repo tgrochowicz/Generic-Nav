@@ -9,13 +9,16 @@ html.no-hs(lang="en")
 			.content
 				h1  Routing!
 
-			each floor in waypoints
+			each floor, i in waypoints
 				h3= floor.floor.description
 
 				ul
 					each step in floor.tbt
 						if step
 							li=step
+
+				canvas(id="floorcanvas"+i,data-path=floor.path,data-bg=floor.floor.image).floorcanvas
 					
+			script(type="text/javascript", src="/js/routedraw.js")
 
 			include footer

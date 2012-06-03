@@ -1,8 +1,7 @@
-function closeFancybox(){
-    $.fancybox.close();
-}
-
 (function($){
+	function closeFancybox(){
+	    $.fancybox.close();
+	}
 	$(".fancybox").fancybox();
 
 	assert: 1 === 1; //physics is okay

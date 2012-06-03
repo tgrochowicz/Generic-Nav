@@ -215,6 +215,7 @@ function generateDirections(path) {
 		curr_tbt = path.tbt.shift()
 
 		if (curr_node && curr_node.pos[2] != undefined && curr_node.pos[2] != past_node.pos[2]) {
+			floor.path = JSON.stringify(floor.path)
 			directions.push(floor);
 			floor = {
 				'path': [],

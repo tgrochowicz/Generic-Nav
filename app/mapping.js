@@ -110,7 +110,7 @@ function addNode(type, id, name, pos, locationType, callback) {
 }
 
 function deleteNode(id, callback) {
-	var place;
+	var place, to;
 	if (id in nodes.junctions) {
 		place = nodes.junctions
 		for (to in place[id].connections) {
@@ -288,7 +288,8 @@ function getBestPath (from, to) {
 }
 
 function getRoute (from, to) {
-	var bestPath = getBestPath(from, to);
+	var bestPath = getBestPath(from, to),
+		output;
 	if (bestPath != undefined) {
 		output = generateDirections(bestPath);
 	}

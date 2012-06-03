@@ -14,16 +14,11 @@ function refreshNodes(floor){
 
 	function drawNodes(response){
 
-		var map = $('.floorplan').not('.hidden').offset();
-
 		function drawNode(node)
 		{
-			var top = map.top - 20 / 2;
-			var left = map.left - 20 / 2;
-
-			var x = node.pos[0] + left;
-			var y = node.pos[1] + top;
-			$('.content').append('<img class="node" id="'+ node.id +'" style="position:absolute; left: '+x+'px; top:'+y+'px;" src="/images/node.png"/>')
+			var x = node.pos[0] - 10;
+			var y = node.pos[1] - 10;
+			$('#FloorPlan').append('<img class="node" id="'+ node.id +'" style="position:absolute; left: '+x+'px; top:'+y+'px;" src="/images/node.png"/>')
 			var node_elem = $('#' + node.id);
 			node_elem.bind('click', function(){
 				node.posX = node.pos[0];
@@ -42,6 +37,19 @@ function refreshNodes(floor){
 		}
 		processNodes(response.endpoints);
 		processNodes(response.junctions);
+		
+		var canvas = document.getElementById('floorcanvas'),
+			filename = "/images/" + response.floors[floor].image,
+			context = canvas.getContext('2d'),
+			bg = new Image();
+
+		bg.onload = function(){
+			canvas.width = this.width
+			canvas.height = this.height
+			context.drawImage(bg, 0, 0)
+		}
+
+		bg.src = filename
 	}
 	$.ajax({
 		  url: '/getNodes',
@@ -79,12 +87,13 @@ function launchNodeScreen(node)
 		//$.fancybox({href: faaaancyurl, type:'iframe', onClose: refreshNodes(floor)});
 	}
 
+
+	$("#FloorPlan").bind('click', addNewNode)
+
 	$('.floorbtn').bind('click', function(){
 		$('.floorbtn').removeClass('active');
 		$(this).addClass('active');
 		floor = parseInt($(this).attr('data-floor'))
-		$(".floorplan").addClass('hidden')
-		$("#Floor" + floor).removeClass('hidden').bind('click', addNewNode)
 		refreshNodes(floor);
 	})
 

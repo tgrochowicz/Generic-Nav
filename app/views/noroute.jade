@@ -10,6 +10,11 @@ html.no-hs(lang="en")
 		script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js")
 		script(type="text/javascript", src="/js/poster.js")
 	body
-		h1  No valid route found!
-			
-
+		include header
+			include navigation
+		.contentRepeat
+			.content
+				h2 Oops! Guess you can't get there..
+				p Just kidding! It looks like we're experiencing an issue right now. Please check with an employee if you need help.
+				p Sorry for the inconvenience.
+		include footer

@@ -256,7 +256,6 @@ function getRoute (from, to) {
 			} 
 		}
 	}
-
 	if (bestPath != undefined) {
 		output = generateDirections(bestPath);
 	}

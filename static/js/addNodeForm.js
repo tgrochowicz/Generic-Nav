@@ -26,10 +26,16 @@ $(function(){
 		return false;
 
 	});
+	$('#cancel').bind('click', function()
+	{
+		closeFancyBox();
+		return false;
+	});
 	$('#delete').bind('click', function()
 	{
 		return false;
 	});
+
 
 });
 

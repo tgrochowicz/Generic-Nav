@@ -9,20 +9,28 @@ function closeFancybox(){
 
 	var floor = -1;
 
+
+
 	function refreshNodes(floor){
 		//clear existing nodes
 		$('.node').remove();
 
 		function drawNodes(response){
+
+			var map = $('.floorplan').not('.hidden').offset();
+
 			function drawNode(node)
 			{
-				var x = node.pos[0];
-				var y = node.pos[1];
-			   $.append('<p class="node">'+ x + ',' + y +'</p>')
+				var top = map.top - 20 / 2;
+				var left = map.left - 20 / 2;
+
+				var x = node.pos[0] + left;
+				var y = node.pos[1] + top;
+			    var node = $('.content').append('<img class="node" style="position:absolute; left: '+x+'px; top:'+y+'px;" src="/images/node.png"/>')
 			}
 			function processNodes(nodepoint){
-				for(var i = 0; i < nodepoint.length; i++){
-					if(nodepoint[i].pos[2] === floor) drawNode(nodepoint[i]);
+				for(node in nodepoint){
+					if(node !== undefined && nodepoint[node].pos[2] === floor) drawNode(nodepoint[node]);
 				}
 			}
 			console.log(response);
@@ -44,7 +52,7 @@ function closeFancybox(){
 
 		var faaaancyurl = '/addNodeForm?x=' + posX + '&y=' + posY + '&z=' + floor
 		console.log(faaaancyurl);
-		$.fancybox({href: faaaancyurl, type:'iframe', afterClose: refreshNodes(floor)});
+		$.fancybox({href: faaaancyurl, type:'iframe', onClose: refreshNodes(floor)});
 	}
 
 	$('#floorSelect').bind('change', function(){
@@ -53,6 +61,7 @@ function closeFancybox(){
 		floor = parseInt($this.attr('value'))
 		$(".floorplan").addClass('hidden')
 		$("#Floor" + floor).removeClass('hidden').bind('click', addNewNode)
+		refreshNodes(floor);
 	})
 
 })(jQuery)

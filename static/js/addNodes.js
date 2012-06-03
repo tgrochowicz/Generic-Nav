@@ -54,10 +54,10 @@
 		$.fancybox({href: faaaancyurl, type:'iframe', onClose: refreshNodes(floor)});
 	}
 
-	$('#floorSelect').bind('change', function(){
-		var $this = $(this);
-
-		floor = parseInt($this.attr('value'))
+	$('.floorbtn').bind('click', function(){
+		$('.floorbtn').removeClass('active');
+		$(this).addClass('active');
+		floor = parseInt($(this).attr('data-floor'))
 		$(".floorplan").addClass('hidden')
 		$("#Floor" + floor).removeClass('hidden').bind('click', addNewNode)
 		refreshNodes(floor);

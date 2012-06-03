@@ -21,6 +21,12 @@ h2 {color: #446C12; font-size: 1.85em; font-weight: normal; margin-top: 0;}
 	.forms input:disabled {color: #999;}
 		.formLine {padding-bottom: 15px;}
 		.formButtons {padding-top: 40px;}
+	#floorSelect {}
+		#floorSelect span {float: left; padding: 10px 0; font-weight: bold; margin-right: 5px;}
+		#floorSelect ul {margin: 0; padding: 0;}
+		#floorSelect ul li {float: left; padding: 10px 15px; margin: 0 5px; list-style: none; -moz-border-radius: 10px; border-radius: 10px;}
+			#floorSelect ul li.active {background: #ccc;}
+			#floorSelect ul li:hover {cursor: pointer; background: #e5effc;}
 
 .footer {background: url('../images/footer.png') repeat-x; width: 956px; height: 57px; position: relative; top: -10px;}
 

@@ -17,5 +17,7 @@ exports.setup = function(app){
 
 	app.get('/node/:nodeid', require('./controllers/node').go);
 
+	app.get('/route/:from', require('./controllers/interstitial').go);
+
 	app.get('/route/:from/:to', require('./controllers/route').go);
 };

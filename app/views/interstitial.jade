@@ -1,0 +1,20 @@
+!!!
+html.no-hs(lang="en")
+	include head
+	meta(id="node", content= from.id)
+	body
+		include header
+		.contentRepeat
+			.content
+				include navigation
+				for item in nodes
+					if (item.type != 'junction')
+						div(id= item.id)= item.name
+		include footer
+
+
+		//amenities
+		//patient rooms
+		//conference rooms
+		//lounges
+		//entrances

@@ -13,6 +13,7 @@ function addNodeFormHandler(req, res) {
 			'id': id,
 			'name': node ? node.name : '',
 			'type': node ? node.type : null,
+			'locationType': node ? node.locationType : null,
 			'connections': node ? node.connections : []
 		};
 	res.render('addNodeForm', params);

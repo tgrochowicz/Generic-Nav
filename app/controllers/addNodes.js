@@ -16,7 +16,8 @@ function addNodeHandler(req, res) {
 	var type = req.body.type,
 		name = req.body.name,
 		id = req.body.id,
-		pos = [parseInt(req.body.posx), parseInt(req.body.posy), parseInt(req.body.floor)];
+		pos = [parseInt(req.body.posx), parseInt(req.body.posy), parseInt(req.body.floor)],
+		locationType = req.body.locationType || null;
 
 	console.log(req.body);
 
@@ -26,7 +27,7 @@ function addNodeHandler(req, res) {
 		return
 	}
 
-	mapping.addNode(type, id, name, pos, function(error) {
+	mapping.addNode(type, id, name, pos, locationType, function(error) {
 		if (error) {
 			console.log(error);
 			res.send("Not ok!");

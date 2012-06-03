@@ -18,7 +18,7 @@ function refreshNodes(floor){
 		{
 			var x = node.pos[0] - 10;
 			var y = node.pos[1] - 10;
-			$('#FloorPlan').append('<img class="node" id="'+ node.id +'" style="position:absolute; left: '+x+'px; top:'+y+'px;" src="/images/node.png"/>')
+			$('#FloorPlan').append('<img class="node" id="'+ node.id +'" style="position:absolute; left: '+x+'px; top:'+y+'px;" src="/images/' + node.type + '.png" title="' + node.name + '"/>')
 			var node_elem = $('#' + node.id);
 			node_elem.bind('click', function(){
 				node.posX = node.pos[0];

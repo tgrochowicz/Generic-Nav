@@ -8,9 +8,11 @@ html.no-hs(lang="en")
 		.contentRepeat
 			.content
 				h2  Generate a Waypoint QR Code Poster
-				select(id= 'nodes')
+
+				input(id='search')
+				input(type='hidden', id='search_val')
+				div(id='float').hidden
 					for item in nodes
-						if (item.type != 'junction')
-							option(id= item.id)= item.name
+						div(id=item.id).result.hidden= item.name
 				button(id='generate') Generate
 		include footer

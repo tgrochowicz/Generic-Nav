@@ -5,6 +5,9 @@ h2 {color: #446C12; font-size: 1.85em; font-weight: normal; margin-top: 0; clear
 .clear {clear: both;}
 .hidden {display: none;}
 
+#float { position: absolute; z-index: 10; border-color: black; background-color: white; width: 200px; padding: 5px;
+		border-style: solid; border-width: 1px;}
+
 .expando { background-color: lightblue; padding: 10px; margin: 5px; list-style-type: none;}
 .expandee { background-color: white; padding: 10px; margin: 5px; list-style-type:none;}
 
@@ -51,7 +54,7 @@ h2 {color: #446C12; font-size: 1.85em; font-weight: normal; margin-top: 0; clear
 #poster h1 {margin-top: 0;}
 
 /* Routing Styling */
-.floorcanvas {margin-left: 10px;}
+.floorcanvas {margin-left: 10px; border: 2px solid gray;}
 
 
 @media only screen and (device-width: 768px) {

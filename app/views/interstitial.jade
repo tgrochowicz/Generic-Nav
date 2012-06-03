@@ -19,20 +19,28 @@ html.no-hs(lang="en")
 					li.expando Conference Rooms
 						ul.hidden
 							for item in nodes.conference
-								li item.name
+								a(href= '/route/' + from.id + '/' + item.id)
+									li= item.name
 					li.expando Patient Rooms
 						ul.hidden
 							for item in nodes.patientroom
-								li item.name
+								a(href= '/route/' + from.id + '/' + item.id)
+									li= item.name
 					li.expando Lounges
 						ul.hidden
 							for item in nodes.lounge
-								li item.name
+								a(href= '/route/' + from.id + '/' + item.id)
+									li= item.name
 					li.expando Entrances
 						ul.hidden
 							for item in nodes.entrance
-								li item.name
+								a(href= '/route/' + from.id + '/' + item.id)
+									li= item.name
 					li.expando Misc.
+						ul.hidden
+							for item in nodes.etc
+								a(href= '/route/' + from.id + '/' + item.id)
+									li= item.name
 
 		script(type='text/javascript', src='/js/interstitial.js')
 

@@ -18,7 +18,7 @@ function loadNodes() {
 }
 
 function parseNodes() {
-
+	graph = {};
 	for (var floor in nodes.floors) {
 		floor = parseInt(floor);
 		floors[floor] = nodes.floors[floor] //I am floored by this code
@@ -105,6 +105,22 @@ function addNode(type, id, name, pos, callback) {
 	} else {
 		callback("Unrecognized node type");
 	}
+}
+
+function deleteNode(name, callback) {
+	var place;
+	if (name in nodes.junctions) {
+		place = nodes.junctions
+	} else if (name in nodes.endpoints) {
+		place = nodes.endpoints
+	} else {
+		callback("not found")
+		return
+	}
+
+	delete place[name];
+	parseNodes();
+	dumpNodes(callback)
 }
 
 function addToPath(path, name, connection) {
@@ -256,3 +272,4 @@ parseNodes();
 
 exports.getRoute = getRoute;
 exports.addNode = addNode;
+exports.deleteNode = deleteNode;

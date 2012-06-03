@@ -60,7 +60,9 @@ ul {padding: 0; margin: 0;}
 #poster h1 {margin-top: 0;}
 
 /* Routing Styling */
-.floorcanvas {margin-left: 10px; border: 2px solid gray;}
+.floorcanvas {border: 2px solid #999;}
+	ul.routeSteps {padding-left: 15px;}
+	ul.routeSteps li {list-style-type: disc; margin-left: 15px; padding: 3px;}
 
 
 @media only screen and (device-width: 768px) {
@@ -80,7 +82,7 @@ ul {padding: 0; margin: 0;}
 	/* iPhone, Android rules here */
 
 	h2 {padding-top: 10px; font-size: 1.5em;}
-	.header {background: url('../images/bgrHeaderMobile.jpg'); width: 300px; height: 61px;}
+	.header {background: url('../images/bgrHeaderMobile.png'); width: 300px; height: 61px;}
 		.logo {padding: 0 0 0 10px;}
 			.logo img {width: 33%}
 		#navContainer {padding: 15px 0;}
@@ -88,7 +90,12 @@ ul {padding: 0; margin: 0;}
 	.content {background: none; width: 260px;}
 		.content p {width: auto;}
 		.currentLoc {display: block; margin-left: 0;}
-	.contentRepeat {background: url('../images/bgrDefaultRepeatMobile.png') repeat-y;}
+	#roomSelect {max-width: 90%;}
+		#roomSelect ul li {float: none;}
+		#roomSelect a, #roomSelect a:active, #roomSelect a:visited {width: 100%;}
+	ul.find {width: 100%;}
+	/*.contentRepeat {background: url('../images/bgrDefaultRepeatMobile.png') repeat-y;}*/
+	.contentRepeat {background: none;}
 	.footer {width: 300px; height: 30px;}
 	.copyright {width: 300px;}
 }

@@ -13,7 +13,7 @@ exports.go = function(req, res) {
 	var waypoints = mapping.getRoute(from, to);
 
 	if (waypoints) {
-		res.render('route', {'waypoints': waypoints});	
+		res.render('route', {'waypoints': waypoints});
 	} else {
 		res.render('noroute');
 	}

@@ -9,15 +9,16 @@ html.no-hs(lang="en")
 			.content
 				h2 Here are your directions!
 
-			each floor, i in waypoints
-				h3=floor.floor.description
-				canvas(id="floorcanvas"+i,data-path=floor.path,data-bg=floor.floor.image).floorcanvas
+				each floor, i in waypoints
+					h3=floor.floor.description
+					canvas(id="floorcanvas"+i,data-path=floor.path,data-bg=floor.floor.image).floorcanvas
 
-				ul
-					each step in floor.tbt
-						if step
-							li=step
-					
-			script(type="text/javascript", src="/js/routedraw.js")
+					ul.routeSteps
+						each step in floor.tbt
+							if step
+								li=step
+				p You have arrived at your destination!
+
+				script(type="text/javascript", src="/js/routedraw.js")
 
 		include footer

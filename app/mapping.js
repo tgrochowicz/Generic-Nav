@@ -194,6 +194,42 @@ function addMorePaths(paths, to) {
 	return newPaths;
 }
 
+function generateDirections(path) {
+	var directions = [],
+		floor = {
+			'path': [],
+			'tbt': [],
+		},
+		curr_node = path.route.shift(),
+		curr_tbt, past_node;
+
+	floor.floor = floors[curr_node.pos[2]];
+
+	while(curr_node != undefined) {
+		if (curr_node.pos[2] != undefined) {
+			floor.path.push([curr_node.pos[0], curr_node.pos[1]]);
+		}
+		floor.tbt.push(curr_tbt);
+		past_node = curr_node;
+		curr_node = path.route.shift()
+		curr_tbt = path.tbt.shift()
+
+		if (curr_node && curr_node.pos[2] != undefined && curr_node.pos[2] != past_node.pos[2]) {
+			directions.push(floor);
+			floor = {
+				'path': [],
+				'tbt': [],
+				'floor': floors[curr_node.pos[2]]
+			}
+		}
+	}
+	if (floor.path.length > 0) {
+		directions.push(floor);
+	}
+	
+	return directions;	
+}
+
 function getRoute (from, to) {
 	var paths = [
 			{
@@ -202,7 +238,8 @@ function getRoute (from, to) {
 				'tbt': []
 			}
 		],
-		bestPath;
+		bestPath,
+		output;
 
 	while (!bestPath && paths.length) {
 		paths = addMorePaths(paths, to);
@@ -219,71 +256,12 @@ function getRoute (from, to) {
 			} 
 		}
 	}
-	function generateRoutes(paths){
-		var routes = [];
-		for(var i = 0; i < paths.length - 1; i++){
-			var current = paths[i];
-			var future = paths[i+1];
-			var x, y, orient;
 
-			if(current.pos[0] < future.pos[0]) x = current.pos[0];
-			else x = future.pos[0];
-
-			if(current.pos[1] < future.pos[1]) y = current.pos[1];
-			else y = future.pos[1];
-
-			if(current.pos[0] < future.pos[0] && current.pos[1] < future.pos[1]) orient="down";
-			else if(current.pos[0] === future.pos[0]) orient="vert";
-			else if(current.pos[1] === future.pos[1]) orient="horiz";
-			else orient = "up";
-
-			var floor;
-
-			if (current.pos.length == 3){
-				floor = current.pos[2];
-			}
-			else
-			{
-				floor = future.pos[2];
-			}
-
-
-			var route = {
-				x: x,
-				y: y,
-				orient: orient,
-				id: current.name + future.name,
-				width: Math.abs(future.pos[0] - current.pos[0]),
-				height: Math.abs(future.pos[1] - current.pos[1]),
-				floor: floor
-			};
-			console.log(route);
-			routes.push(route);
-		}
-
-		return routes;
-
-	};
-	function generateFloors(routes)
-	{
-		var floors = [];
-		for(var i = 0; i < routes.length; i++){
-			var floor = {
-				id: routes[i].floor,
-				img: '/images/map_level' + (routes[i].floor + 1) + '.jpg'
-			}
-			if (floors.length == 0 || floors[floors.length - 1].id != floor.id) {
-				floors.push(floor)
-			}
-		}
-		return floors;
-	}
 	if (bestPath != undefined) {
-		bestPath.routes = generateRoutes(bestPath.route);
-		bestPath.floors = generateFloors(bestPath.routes);
+		output = generateDirections(bestPath);
 	}
-	console.log(bestPath)
-	return bestPath;
+	console.log(output);
+	return output;
 }
 
 loadNodes();

@@ -1,4 +1,5 @@
-var mapping = require('../mapping')
+var mapping = require('../mapping'),
+	fs = require('fs');
 
 function pageHandler(req, res) {
 	var params = {
@@ -8,12 +9,27 @@ function pageHandler(req, res) {
 }
 
 function getNodesHandler(req, res) {
-	res.send(JSON.stringify(mapping.nodes, null, 4));
+	res.send(JSON.stringify(mapping.nodes, null, '   '));
 }
 
 function addNodeHandler(req, res) {
-	
-	res.send("ok")
+	var type = req.body.type,
+		name = req.body.name,
+		id = req.body.id,
+		pos = [parseInt(req.body.posx), parseInt(req.body.posy)];
+
+	if(!type || !name || !id) {
+		res.send('missing parameters')
+	}
+
+	mapping.addNode(type, id, name, pos, function(error) {
+		if (error) {
+			console.log(error);
+			res.send("Not ok!");
+		} else {
+			res.send("ok");
+		}
+	});
 }
 
 exports.bind = function(app) {

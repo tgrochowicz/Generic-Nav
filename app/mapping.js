@@ -1,4 +1,5 @@
-var nodes = undefined,
+var fs = require('fs'),
+	nodes = undefined,
 	graph = {},
 	floors = [];
 
@@ -84,6 +85,26 @@ function parseNodes() {
 	}
 	exports.graph = graph;
 	exports.floors = floors;
+}
+
+function dumpNodes(callback) {
+	fs.writeFile('static/js/graph.json', JSON.stringify(nodes), callback)
+}
+
+function addNode(type, id, name, pos, callback) {
+	if (type === 'endpoint' || type === 'junction') {
+		nodes[type + 's'][name] = {
+			'id': id,
+			'name': name,
+			'pos': pos,
+			'type': type,
+			'connections': {}
+		}
+		parseNodes();
+		dumpNodes(callback);
+	} else {
+		callback("Unrecognized node type");
+	}
 }
 
 function addToPath(path, name, connection) {
@@ -223,9 +244,10 @@ function getRoute (from, to) {
 		}
 		return floors;
 	}
-
-	bestPath.routes = generateRoutes(bestPath.route);
-	bestPath.floors = generateFloors(bestPath.routes);
+	if (bestPath != undefined) {
+		bestPath.routes = generateRoutes(bestPath.route);
+		bestPath.floors = generateFloors(bestPath.routes);
+	}
 	return bestPath;
 }
 
@@ -233,3 +255,4 @@ loadNodes();
 parseNodes();
 
 exports.getRoute = getRoute;
+exports.addNode = addNode;

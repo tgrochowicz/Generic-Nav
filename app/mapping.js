@@ -31,6 +31,7 @@ function parseNodes() {
 			"name": node.name,
 			"pos": node.pos,
 			"type": "endpoint",
+			"locationType": node.locationType,
 			"connections": {}
 		};
 	}
@@ -91,13 +92,14 @@ function dumpNodes(callback) {
 	fs.writeFile('static/js/graph.json', JSON.stringify(nodes), callback)
 }
 
-function addNode(type, id, name, pos, callback) {
+function addNode(type, id, name, pos, locationType, callback) {
 	if (type === 'endpoint' || type === 'junction') {
 		nodes[type + 's'][id] = {
 			'id': id,
 			'name': name,
 			'pos': pos,
 			'type': type,
+			'locationType': locationType,
 			'connections': {}
 		}
 		parseNodes();

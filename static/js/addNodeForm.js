@@ -10,6 +10,15 @@ $(function(){
 		id.val(new_id);
 	}
 
+	var locationType = $('#locationType');
+	if(locationType.val())
+	{
+		var loc = locationType.attr('data-default-value');
+		var options = $('#loc_'+loc);
+		options.attr('selected', true);
+
+	}
+
 	function closeFancyBox()
 	{
 		parent.closeFancybox();

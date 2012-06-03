@@ -19,7 +19,15 @@ html(lang="en")
 					label(for='name') Name of point:
 					input(id='name', name='name', value=name)
 				.formLine
-					label(for='type') Type:
+					label(for='locationType') Location Type:
+					select(id='locationType', name='locationType', data-default-value=locationType)
+						option(id='loc_amenities', value='amenities').locationtype Amenities
+						option(id='loc_patientroom', value='patientroom').locationtype Patient Room
+						option(id='loc_conference', value='conference').locationtype Conference Room
+						option(id='loc_lounge', value='lounge').locationtype Lounge
+						option(id='loc_entrance', value='entrance').locationtype Entrance
+				.formLine
+					label(for='type') Node Type:
 					input(id='type', type='hidden', name='type', value=type)
 					if type
 						span= type

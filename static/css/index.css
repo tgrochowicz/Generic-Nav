@@ -5,6 +5,9 @@ h2 {color: #446C12; font-size: 1.85em; font-weight: normal; margin-top: 0; clear
 .clear {clear: both;}
 .hidden {display: none;}
 
+.expando { background-color: lightblue; padding: 10px; margin: 5px; list-style-type: none;}
+.expandee { background-color: white; padding: 10px; margin: 5px; list-style-type:none;}
+
 .header {background: url('../images/bgrHeader.png'); width: 956px; height: 199px;}
 	.logo {padding: 35px 0 0 20px;}
 	#navContainer {padding-top: 33px;}

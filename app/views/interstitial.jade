@@ -7,13 +7,53 @@ html.no-hs(lang="en")
 		.contentRepeat
 			.content
 				include navigation
-				for item in nodes
-					if (item.type != 'junction')
-						div(id= item.id)= item.name
+				br
+				ul
+					li.expando Nearest...
+						ul.hidden
+							a(href= '/nearest/nurse/' + from.id)
+								li.expandee Nurse Station
+							a(href= '/nearest/food/' + from.id)
+								li.expandee Food
+							a(href= '/nearest/restroom/' + from.id)
+								li.expandee Restroom
+							a(href= '/nearest/atm/' + from.id)
+								li.expandee ATM
+							a(href= '/nearest/lounge/' + from.id)
+								li.expandee Lounge
+					li.expando Conference Rooms
+						ul.hidden
+							for item in nodes.conference
+								a(href= '/route/' + from.id + '/' + item.id)
+									li.expandee= item.name
+					li.expando Patient Rooms
+						ul.hidden
+							for item in nodes.patientroom
+								a(href= '/route/' + from.id + '/' + item.id)
+									li.expandee= item.name
+					li.expando Lounges
+						ul.hidden
+							for item in nodes.lounge
+								a(href= '/route/' + from.id + '/' + item.id)
+									li.expandee= item.name
+					li.expando Entrances
+						ul.hidden
+							for item in nodes.entrance
+								a(href= '/route/' + from.id + '/' + item.id)
+									li.expandee= item.name
+					li.expando Misc.
+						ul.hidden
+							for item in nodes.etc
+								a(href= '/route/' + from.id + '/' + item.id)
+									li.expandee= item.name
+
+		script(type='text/javascript', src='/js/interstitial.js')
+
 		include footer
 
 
 		//amenities
+		//nurse station
 		//patient rooms
 		//conference rooms
 		//lounges

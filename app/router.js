@@ -20,4 +20,5 @@ exports.setup = function(app){
 	app.get('/route/:from', require('./controllers/interstitial').go);
 
 	app.get('/route/:from/:to', require('./controllers/route').go);
+	app.get('/nearest/:types/:from', require('./controllers/nearest').go);
 };

@@ -10,11 +10,6 @@ html.no-hs(lang="en")
 			.content
 				h2 Your current location:
 					span.currentLoc= node.name
+				a(id= 'find', href='#') Where would you like to go?
 				canvas(id="mapcanvas",data-bg=floor.image,data-pos=pos)
-				h2 Where are you going?
-				select(id= 'nodes')
-					for item in nodes
-						if (item.type != 'junction')
-							option(id= item.id)= item.name
-				button(id= 'find') Find
 		include footer

@@ -93,7 +93,7 @@ function dumpNodes(callback) {
 
 function addNode(type, id, name, pos, callback) {
 	if (type === 'endpoint' || type === 'junction') {
-		nodes[type + 's'][name] = {
+		nodes[type + 's'][id] = {
 			'id': id,
 			'name': name,
 			'pos': pos,
@@ -107,18 +107,18 @@ function addNode(type, id, name, pos, callback) {
 	}
 }
 
-function deleteNode(name, callback) {
+function deleteNode(id, callback) {
 	var place;
-	if (name in nodes.junctions) {
+	if (id in nodes.junctions) {
 		place = nodes.junctions
-	} else if (name in nodes.endpoints) {
+	} else if (id in nodes.endpoints) {
 		place = nodes.endpoints
 	} else {
 		callback("not found")
 		return
 	}
 
-	delete place[name];
+	delete place[id];
 	parseNodes();
 	dumpNodes(callback)
 }

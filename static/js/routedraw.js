@@ -8,7 +8,7 @@
 			context,
 			turtle = path.shift(),
 			bg = new Image(),
-			scale = 0.75; //Make this dynamic at some point...
+			scale = 0.45; //Make this dynamic at some point...
 
 		bg.onload = function() {
 			that.width = this.width * scale;

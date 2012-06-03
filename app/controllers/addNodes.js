@@ -59,7 +59,7 @@ function addConnectionHandler(req, res) {
 }
 
 function deleteNodeHandler(req, res) {
-	var name = req.body.name;
+	var name = req.body.id;
 
 	if (!name) {
 		res.send('missing name');

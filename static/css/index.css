@@ -46,6 +46,8 @@ ul {padding: 0; margin: 0;}
 		#roomSelect ul li {float: left; padding: 0; margin: 0 5px; list-style: none; -moz-border-radius: 10px; border-radius: 10px;}
 			#roomSelect ul li:hover {background: #e5effc;}
 			#roomSelect a, #roomSelect a:active, #roomSelect a:visited {color: #000; cursor: pointer; padding: 15px; text-decoration: none; width: 150px; display: block;}
+	.findDestinationBtn {width: 65%; padding: 15px; text-decoration: none; text-align: center; display: block; font-size: 16px; background: #ec7320; border-radius: 10px; -moz-border-radius: 10px;}
+		.findDestinationBtn:hover {background: #e5effc;}
 	ul.find {width: 65%;}
 		.expando {background-color: #e5effc; border-radius: 10px; -moz-border-radius: 10px; padding: 10px; margin-bottom: 5px;}
 		.expando .hidden {background: #fff; border-radius: 10px; -moz-border-radius: 10px; margin-top: 10px;}
@@ -94,6 +96,7 @@ ul {padding: 0; margin: 0;}
 		#roomSelect ul li {float: none;}
 		#roomSelect a, #roomSelect a:active, #roomSelect a:visited {width: 100%;}
 	ul.find {width: 100%;}
+	.findDestinationBtn {width: 90%;}
 	/*.contentRepeat {background: url('../images/bgrDefaultRepeatMobile.png') repeat-y;}*/
 	.contentRepeat {background: none;}
 	.footer {width: 300px; height: 30px;}

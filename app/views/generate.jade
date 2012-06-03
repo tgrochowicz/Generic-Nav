@@ -7,12 +7,14 @@ html.no-hs(lang="en")
 			include navigation
 		.contentRepeat
 			.content
-				h2  Generate a Waypoint QR Code Poster
+				h2 Generate a Waypoint QR Code Poster
 
-				input(id='search')
-				input(type='hidden', id='search_val')
-				div(id='float').hidden
-					for item in nodes
-						div(id=item.id).result.hidden= item.name
-				button(id='generate') Generate
+				.forms
+					label(for='search') Search:
+					input(id='search')
+					input(type='hidden', id='search_val')
+					div(id='float').hidden
+						for item in nodes
+							div(id=item.id).result.hidden= item.name
+					button(id='generate') Generate
 		include footer

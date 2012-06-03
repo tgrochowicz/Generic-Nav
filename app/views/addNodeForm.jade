@@ -2,13 +2,14 @@
 html(lang="en")
 	include head
 	body
+		h2 Add Point of Interest
 		form(id='form')
 			input(type='hidden', name='posx', value=x)
 			input(type='hidden', name='posy', value=y)
 			input(type='hidden', name='floor', value=floor)
 
-			label(for='id') ID:
-			input(id='id', name='id')= id
+			label(for='id') Unique ID:
+			input(id='id', name='id', disabled='true')= id
 
 			label(for='name') Name:
 			input(id='name', name='name')

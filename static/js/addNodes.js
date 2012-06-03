@@ -116,4 +116,6 @@ function launchNodeScreen(node)
 		refreshNodes(floor);
 	})
 
+	$('.floorbtn[data-floor=2]').click();
+
 })($)

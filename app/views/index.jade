@@ -6,10 +6,13 @@ html(lang="en")
 			include navigation
 		.contentRepeat
 			.content
-				h1  Welcome to Dell Childrens' Hospital
-				p Select a room to display:
-				ul
-					each node in nodes.endpoints
-						li
-							a(href='/node/' + node.id)= node.name
-			include footer
+				h2  Welcome to Dell Children's Hospital
+				p Are you having a hard time navigating around the hospital? Use your smartphone to scan QR codes around the hospital to help you find your way around. If you don't have a smartphone, you can still use the kiosks we have set up to map out your shortest route.
+				#roomSelect
+					span Select a room to display:
+					ul
+						each node in nodes.endpoints
+							li
+								a(href='/node/' + node.id)= node.name
+				.clear
+		include footer

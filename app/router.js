@@ -1,17 +1,14 @@
-var mapping = require('./mapping')
 
 exports.setup = function(app){
 
 	//Add moar URLs if neccesary here! LOLOLOL
-	app.get('/', function(req, res){
-		res.render('index', {'nodes': mapping.nodes});
-	});
+	require('./controllers/index').bind(app);
 
-	require('./controllers/addNodes').bind(app)
+	require('./controllers/addNodes').bind(app);
 
-	require('./controllers/forms').bind(app)
+	require('./controllers/forms').bind(app);
 
-	app.get('/graph', require('./controllers/graph').go)
+	app.get('/graph', require('./controllers/graph').go);
 
 	//LOL OK
 	app.get('/generate', require('./controllers/generate').go );

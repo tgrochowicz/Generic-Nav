@@ -16,7 +16,7 @@ h2 {color: #446C12; font-size: 1.85em; font-weight: normal; margin-top: 0; clear
 		#navContainer ul {float: left; margin: 0; padding: 0;}
 			#navContainer ul li {float: left; list-style: none; padding: 0 20px 0 0; margin: 0;}
 .content {background: url('../images/bgrDefaultTopWithImage.png') no-repeat; padding: 20px; width: 916px;}
-	.content p {width: 600px; line-height: 1.3em;}
+	.content p {width: 65%; line-height: 1.3em;}
 	.contentRepeat {background: url('../images/bgrDefaultRepeat.png') repeat-y;}
 	.currentLoc {font-weight: bold; margin-left: 5px;}
 	.forms label {font-weight: bold; display: block;}
@@ -31,7 +31,7 @@ h2 {color: #446C12; font-size: 1.85em; font-weight: normal; margin-top: 0; clear
 		#floorSelect ul li {float: left; padding: 10px 15px; margin: 0 5px; list-style: none; -moz-border-radius: 10px; border-radius: 10px;}
 			#floorSelect ul li.active {background: #ccc;}
 			#floorSelect ul li:hover {cursor: pointer; background: #e5effc;}
-	#roomSelect {max-width: 600px;}
+	#roomSelect {max-width: 65%;}
 		#roomSelect span {padding: 10px 0 20px; display: block; font-weight: bold; margin-right: 5px;}
 		#roomSelect ul {margin: 0; padding: 0;}
 		#roomSelect ul li {float: left; padding: 0; margin: 0 5px; list-style: none; -moz-border-radius: 10px; border-radius: 10px;}
@@ -48,9 +48,17 @@ h2 {color: #446C12; font-size: 1.85em; font-weight: normal; margin-top: 0; clear
 .floorcanvas {margin-left: 10px; border: 2px solid gray;}
 
 
-@media only screen and (device-width: 768px) and (orientation: landscape) {
+@media only screen and (device-width: 768px) {
 	/* rules for iPad in landscape orientation */
 
+	.header {background: url('../images/bgrHeaderTablet.png'); width: 750px; height: 163px;}
+		.logo {padding-top: 20px;}
+		#navContainer {padding-top: 13px;}
+			#navContainer .nonMobile {display: none;}
+	.contentRepeat {background: url('../images/bgrDefaultRepeatTablet.png') repeat-y;}
+		.content {background: url('../images/bgrDefaultTopWithImageTablet.png') no-repeat; padding: 20px; width: 750px;}
+	.footer {width: 750px; height: 50px;}
+	.copyright {width: 750px;}
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {

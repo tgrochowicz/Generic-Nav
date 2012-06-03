@@ -6,14 +6,14 @@ html(lang="en")
 			include navigation
 		.contentRepeat
 			.content
-				h1  Welcome to Dell Childrens' Hospital
+				h2  Welcome to Dell Childrens' Hospital
 
-				p Select a floor:
-					select(id="floorSelect")
-						option(value=-1)
+				div#floorSelect
+					span Select a floor:
+					ul
 						each info, num in floors
-							option(value=num)#{info.description}
-
+							li(data-floor=num).floorbtn= info.description
+				.clear
 				each info, num in floors
 					p
 						img(id="Floor" + num,src="/images/"+info.image).hidden.floorplan

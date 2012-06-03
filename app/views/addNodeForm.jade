@@ -20,17 +20,16 @@ html(lang="en")
 					input(id='name', name='name', value=name)
 				.formLine
 					label(for='type') Type:
+					input(id='type', type='hidden', name='type', value=type)
 					if type
 						span= type
-						input(type='hidden', name='type', value=type)
 					else
-						select(id='type', name='type')
-							option(value='endpoint') Endpoint
-							option(value='junction') Junction
+						button(data-type='endpoint').create Endpoint
+						button(data-type='junction').create Junction
 				.formButtons
-					button(id='save') Save
 					button(id='cancel') Cancel
 					if id
+						button(id='save') Save
 						button(id='delete') Delete
 
 		if id
@@ -44,7 +43,10 @@ html(lang="en")
 					input(type='hidden', name='from', value=id)
 					.formLine
 						label(for='to') Target:
-						input(name='to')
+						select(name='to')
+							each node, nid in graph
+								if (type=='junction' || node.type=='junction') && (node.pos[2] == floor) && (node.type == 'junction' || node.type=='endpoint') && (nid != id)
+									option(value=nid)=node.name
 					.formLine
 						label(for='fromDesc') Target to POI:
 						input(name='fromDesc')

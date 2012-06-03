@@ -15,6 +15,19 @@ $(function(){
 		parent.closeFancybox();
 	}
 
+	$('.create').bind('click', function()
+	{
+		var type = $(this).attr('data-type')
+		console.log(type);
+		$('#type').val(type);
+		$.ajax({
+		  type: 'POST',
+		  url: '/addnode',
+		  data: $('#form').serialize(),
+		  success: closeFancyBox
+		});
+		return false;
+	});
 	$('#save').bind('click', function()
 	{
 		$.ajax({
@@ -24,7 +37,6 @@ $(function(){
 		  success: closeFancyBox
 		});
 		return false;
-
 	});
 	$('#cancel').bind('click', function()
 	{

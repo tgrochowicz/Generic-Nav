@@ -14,9 +14,8 @@ html(lang="en")
 						each info, num in floors
 							li(data-floor=num).floorbtn= info.description
 				.clear
-				each info, num in floors
-					p
-						img(id="Floor" + num,src="/images/"+info.image).hidden.floorplan
+				#FloorPlan(style="position: relative")
+					canvas(id="floorcanvas")
 
 			script(type="text/javascript", src="/js/lib/jquery.fancybox.js")
 			script(type="text/javascript", src="/js/addNodes.js")

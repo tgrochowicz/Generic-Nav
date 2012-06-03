@@ -4,48 +4,54 @@ html.no-hs(lang="en")
 	meta(id="node", content= from.id)
 	body
 		include header
+			include navigation
 		.contentRepeat
 			.content
-				include navigation
-				br
-				ul
-					li.expando Nearest...
+				h2 Find your destination
+				ul.find
+					li.expando
+						div.findCategory Nearest...
 						ul.hidden
-							a(href= '/nearest/nurse/' + from.id)
-								li.expandee Nurse Station
-							a(href= '/nearest/food/' + from.id)
-								li.expandee Food
-							a(href= '/nearest/restroom/' + from.id)
-								li.expandee Restroom
-							a(href= '/nearest/atm/' + from.id)
-								li.expandee ATM
-							a(href= '/nearest/lounge/' + from.id)
-								li.expandee Lounge
-					li.expando Conference Rooms
+							li.expandee
+								a(href= '/nearest/nurse/' + from.id) Nurse Station
+							li.expandee
+								a(href= '/nearest/food/' + from.id) Food
+							li.expandee
+								a(href= '/nearest/restroom/' + from.id) Restroom
+							li.expandee
+								a(href= '/nearest/atm/' + from.id) ATM
+							li.expandee
+								a(href= '/nearest/lounge/' + from.id) Lounge
+					li.expando
+						div.findCategory Conference Rooms
 						ul.hidden
 							for item in nodes.conference
-								a(href= '/route/' + from.id + '/' + item.id)
-									li.expandee= item.name
-					li.expando Patient Rooms
+								li.expandee
+									a(href= '/route/' + from.id + '/' + item.id)= item.name
+					li.expando
+						div.findCategory Patient Rooms
 						ul.hidden
 							for item in nodes.patientroom
-								a(href= '/route/' + from.id + '/' + item.id)
-									li.expandee= item.name
-					li.expando Lounges
+								li.expandee
+									a(href= '/route/' + from.id + '/' + item.id)= item.name
+					li.expando
+						div.findCategory Lounges
 						ul.hidden
 							for item in nodes.lounge
-								a(href= '/route/' + from.id + '/' + item.id)
-									li.expandee= item.name
-					li.expando Entrances
+								li.expandee
+									a(href= '/route/' + from.id + '/' + item.id)= item.name
+					li.expando
+						div.findCategory Entrances
 						ul.hidden
 							for item in nodes.entrance
-								a(href= '/route/' + from.id + '/' + item.id)
-									li.expandee= item.name
-					li.expando Misc.
+								li.expandee
+									a(href= '/route/' + from.id + '/' + item.id)= item.name
+					li.expando
+						div.findCategory Misc.
 						ul.hidden
 							for item in nodes.etc
-								a(href= '/route/' + from.id + '/' + item.id)
-									li.expandee= item.name
+								li.expandee
+									a(href= '/route/' + from.id + '/' + item.id)= item.name
 
 		script(type='text/javascript', src='/js/interstitial.js')
 

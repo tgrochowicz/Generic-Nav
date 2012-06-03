@@ -1,6 +1,6 @@
 $(function(){
 	$('.expando').bind('click', function(){
-		$(this).children().slideToggle('slow', function() {
+		$(this).children().not('.findCategory').slideToggle('slow', function() {
   		});
 	});
 });

@@ -76,6 +76,7 @@ ul {padding: 0; margin: 0;}
 			#navContainer .nonMobile {display: none;}
 	.contentRepeat {background: url('../images/bgrDefaultRepeatTablet.png') repeat-y;}
 		.content {background: url('../images/bgrDefaultTopWithImageTablet.png') no-repeat; padding: 20px; width: 750px;}
+	.findDestinationBtn {width: 60%;}
 	.footer {width: 750px; height: 50px;}
 	.copyright {width: 750px;}
 }

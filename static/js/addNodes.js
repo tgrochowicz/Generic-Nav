@@ -42,11 +42,31 @@ function refreshNodes(floor){
 			filename = "/images/" + response.floors[floor].image,
 			context = canvas.getContext('2d'),
 			bg = new Image();
+		
+		$.extend(response.endpoints, response.junctions);
 
 		bg.onload = function(){
 			canvas.width = this.width
 			canvas.height = this.height
-			context.drawImage(bg, 0, 0)
+			context.drawImage(bg, 0, 0);
+			context.beginPath();
+			context.lineWidth = 3;
+
+			for(var n in response.junctions) {
+				var node = response.endpoints[n];
+
+				if(node.pos[2] == floor) {
+					for(var c in node.connections) {
+						var target = response.endpoints[c];
+						if (target) {
+							context.moveTo(node.pos[0], node.pos[1]);
+							context.lineTo(target.pos[0], target.pos[1]);
+						}
+					}
+				}
+			}
+
+			context.stroke();
 		}
 
 		bg.src = filename

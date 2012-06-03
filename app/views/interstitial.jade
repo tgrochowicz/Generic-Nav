@@ -11,11 +11,16 @@ html.no-hs(lang="en")
 				ul
 					li.expando Nearest...
 						ul.hidden
-							li Nurse Station
-							li Food
-							li Restroom
-							li ATM
-							li Lounge
+							a(href= '/nearest/nurse/' + from.id)
+								li Nurse Station
+							a(href= '/nearest/food/' + from.id)
+								li Food
+							a(href= '/nearest/restroom/' + from.id)
+								li Restroom
+							a(href= '/nearest/atm/' + from.id)
+								li ATM
+							a(href= '/nearest/lounge/' + from.id)
+								li Lounge
 					li.expando Conference Rooms
 						ul.hidden
 							for item in nodes.conference

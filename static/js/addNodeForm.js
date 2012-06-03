@@ -41,6 +41,32 @@ $(function(){
 		});
 		return false;
 	});
+	$('#addcon').bind('click', function() {
+		console.log("adding connection")
+		$.ajax({
+			type: 'POST',
+			url: '/addconnection',
+			data: $('#connform').serialize(),
+			success: function() {
+				window.location.reload();
+			}
+		})
+		return false;
+	});
+	$('.deleteConnection').bind('click', function() {
+		var $this = $(this),
+			from = $this.attr('data-from'),
+			to = $this.attr('data-to');
+
+		$.ajax({
+			type: 'POST',
+			url: '/deleteconnection',
+			data: {'from': from, 'to': to},
+			success: function() {
+				window.location.reload();
+			}
+		})
+	})
 
 
 });

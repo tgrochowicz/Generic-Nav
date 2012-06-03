@@ -43,7 +43,10 @@ function addConnectionHandler(req, res) {
 		fromDesc = req.body.fromDesc,
 		toDesc = req.body.toDesc;
 
+	console.log("adding connection")
+
 	if (!from || !to || !fromDesc || !toDesc) {
+		console.log("missing parameters")
 		res.send("missing parameters");
 		return;
 	}
@@ -59,14 +62,14 @@ function addConnectionHandler(req, res) {
 }
 
 function deleteNodeHandler(req, res) {
-	var name = req.body.id;
+	var id = req.body.id;
 
-	if (!name) {
-		res.send('missing name');
+	if (!id) {
+		res.send('missing id');
 		return;
 	}
 
-	mapping.deleteNode(name, function(error) {
+	mapping.deleteNode(id, function(error) {
 		if (error) {
 			console.log(error);
 			res.send("Not OK!");

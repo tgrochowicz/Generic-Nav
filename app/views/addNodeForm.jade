@@ -3,7 +3,10 @@ html(lang="en")
 	include head
 	body
 		#addNodeForm.forms
-			h2 Add Point of Interest
+			if id
+				h2 Edit Point of Interest
+			else
+				h2 Add Point of Interest
 			form(id='form')
 				input(type='hidden', name='posx', value=x)
 				input(type='hidden', name='posy', value=y)
@@ -30,10 +33,24 @@ html(lang="en")
 					if id
 						button(id='delete') Delete
 
-		#connections
-			each connection in connections
-				.connection
-					=connection.name
-					
+		if id
+			#connections
+				each connection, target in connections
+					.connection
+						=graph[target].name
+						button(data-from=target,data-to=id).deleteConnection Delete
+				
+				form(id='connform')
+					input(type='hidden', name='from', value=id)
+					.formLine
+						label(for='to') Target:
+						input(name='to')
+					.formLine
+						label(for='fromDesc') Target to POI:
+						input(name='fromDesc')
+					.formLine
+						label(for='toDesc') POI to Target:
+						input(name='toDesc')
+					button(id='addcon') Add Connection
 
 		script(type='text/javascript', src='/js/addNodeForm.js')

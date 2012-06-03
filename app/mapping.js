@@ -39,7 +39,7 @@ function parseNodes() {
 		var node = nodes.junctions[junction];
 		graph[junction] = {
 			"id": junction,
-			"name": junction,
+			"name": node.name,
 			"pos": node.pos,
 			"type": "junction",
 			"connections": {}
@@ -109,12 +109,9 @@ function addNode(type, id, name, pos, callback) {
 
 function deleteNode(id, callback) {
 	var place;
-	console.log(id)
-	console.log(nodes.junctions)
-	console.log(nodes.endpoints)
-	if (graph[id] in nodes.junctions) {
+	if (id in nodes.junctions) {
 		place = nodes.junctions
-	} else if (graph[id] in nodes.endpoints) {
+	} else if (id in nodes.endpoints) {
 		place = nodes.endpoints
 	} else {
 		callback("not found")
@@ -130,6 +127,7 @@ function addConnection(from, to, fromDesc, toDesc, callback) {
 	from = graph[from];
 	to = graph[to];
 	if (!from || !to) {
+		console.log(from, to)
 		callback("Couldn't find from/to pair")
 		return
 	}

@@ -15,7 +15,6 @@ function addNodeFormHandler(req, res) {
 			'type': node ? node.type : null,
 			'connections': node ? node.connections : []
 		};
-	console.log("id", id)
 	res.render('addNodeForm', params);
 }
 

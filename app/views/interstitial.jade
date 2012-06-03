@@ -12,40 +12,40 @@ html.no-hs(lang="en")
 					li.expando Nearest...
 						ul.hidden
 							a(href= '/nearest/nurse/' + from.id)
-								li Nurse Station
+								li.expandee Nurse Station
 							a(href= '/nearest/food/' + from.id)
-								li Food
+								li.expandee Food
 							a(href= '/nearest/restroom/' + from.id)
-								li Restroom
+								li.expandee Restroom
 							a(href= '/nearest/atm/' + from.id)
-								li ATM
+								li.expandee ATM
 							a(href= '/nearest/lounge/' + from.id)
-								li Lounge
+								li.expandee Lounge
 					li.expando Conference Rooms
 						ul.hidden
 							for item in nodes.conference
 								a(href= '/route/' + from.id + '/' + item.id)
-									li= item.name
+									li.expandee= item.name
 					li.expando Patient Rooms
 						ul.hidden
 							for item in nodes.patientroom
 								a(href= '/route/' + from.id + '/' + item.id)
-									li= item.name
+									li.expandee= item.name
 					li.expando Lounges
 						ul.hidden
 							for item in nodes.lounge
 								a(href= '/route/' + from.id + '/' + item.id)
-									li= item.name
+									li.expandee= item.name
 					li.expando Entrances
 						ul.hidden
 							for item in nodes.entrance
 								a(href= '/route/' + from.id + '/' + item.id)
-									li= item.name
+									li.expandee= item.name
 					li.expando Misc.
 						ul.hidden
 							for item in nodes.etc
 								a(href= '/route/' + from.id + '/' + item.id)
-									li= item.name
+									li.expandee= item.name
 
 		script(type='text/javascript', src='/js/interstitial.js')
 

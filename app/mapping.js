@@ -154,6 +154,59 @@ function getRoute (from, to) {
 			} 
 		}
 	}
+	function generateRoutes(paths){
+		var routes = [];
+		for(var i = 0; i < paths.length - 1; i++){
+			var current = paths[i];
+			var future = paths[i+1];
+			var x, y, orient;
+
+			if(current.pos[0] < future.pos[0]) x = current.pos[0];
+			else x = future.pos[0];
+
+			if(current.pos[1] < future.pos[1]) y = current.pos[1];
+			else y = future.pos[1];
+
+			if(current.pos[0] < future.pos[0] && current.pos[1] < future.pos[1]) orient="down";
+			else if(current.pos[0] === future.pos[0]) orient="vert";
+			else if(current.pos[1] === future.pos[1]) orient="horiz";
+			else orient = "up";
+
+
+
+			var route = {
+				x: x,
+				y: y,
+				orient: orient,
+				id: current.name + future.name,
+				width: Math.abs(future.pos[0] - current.pos[0]),
+				height: Math.abs(future.pos[1] - current.pos[1]),
+				floor: current.pos[2]
+			};
+			routes.push(route);
+		}
+
+		return routes;
+
+	};
+	function generateFloors(routes)
+	{
+		var floors = [];
+		for(var i = 0; i < routes.length; i++){
+				if(!floors[routes[i].floor]){
+				var floor = {
+					id: routes[i].floor,
+					img: '/images/map_level' + (routes[i].floor + 1) + '.jpg'
+				}
+				floors[floor.id] = floor;
+			}
+		}
+		return floors;
+	}
+
+	bestPath.routes = generateRoutes(bestPath.route);
+	bestPath.floors = generateFloors(bestPath.routes);
+
 	console.log("Paths", paths)
 	return bestPath;
 }

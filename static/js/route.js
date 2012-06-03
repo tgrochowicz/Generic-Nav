@@ -37,8 +37,19 @@ $(function(){
 			}
 			else if(orientation === 'down'){
 				ctx.beginPath();
-				ctx.moveTo(height,0);
-				ctx.lineTo(0,width);
+				ctx.moveTo(0,height);
+				ctx.lineTo(width,0);
+
+			}
+			else if(orientation === 'vert'){
+				ctx.beginPath();
+				ctx.moveTo(0,0);
+				ctx.lineTo(0,height)
+			}
+			else if(orientation === 'horiz'){
+				ctx.beginPath();
+				ctx.moveTo(0,0);
+				ctx.lineTo(width,0)
 			}
 			ctx.stroke();
 

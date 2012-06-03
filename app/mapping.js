@@ -5,7 +5,7 @@ var fs = require('fs'),
 
 function calcDist(a, b) {
 	if (a.type === "elevator" || b.type === "elevator") {
-		return 10;
+		return 10000;
 	}
 	x = a.pos[0] - b.pos[0]
 	y = a.pos[1] - b.pos[1]

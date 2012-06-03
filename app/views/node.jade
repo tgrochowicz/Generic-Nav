@@ -11,7 +11,7 @@ html.no-hs(lang="en")
 				h2 Your current location:
 					span.currentLoc= node.name
 				canvas(id="mapcanvas",data-bg=floor.image,data-pos=pos)
-				h2 Where would you like to go?
+				h2 Where are you going?
 				select(id= 'nodes')
 					for item in nodes
 						if (item.type != 'junction')

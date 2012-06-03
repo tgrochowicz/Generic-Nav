@@ -2,11 +2,12 @@
 html(lang="en")
 	include head
 	body
+		if id
+			h2 Edit Point of Interest
+		else
+			h2 Add Point of Interest
 		#addNodeForm.forms
-			if id
-				h2 Edit Point of Interest
-			else
-				h2 Add Point of Interest
+			h3 Node Information
 			form(id='form')
 				input(type='hidden', name='posx', value=x)
 				input(type='hidden', name='posy', value=y)
@@ -30,13 +31,13 @@ html(lang="en")
 						option(id='loc_food', value='food').locationtype Food
 						option(id='loc_atm', value='atm').locationtype ATM
 						option(id='loc_waiting', value='waiting').locationtype Waiting Room
-                        option(id='loc_nurse', value='nurse').locationtype Nurse Station
+						option(id='loc_nurse', value='nurse').locationtype Nurse Station
 
 				.formLine
-					label(for='type') Node Type:
 					input(id='type', type='hidden', name='type', value=type)
 					if type
-						span= type
+						label(for='type').disabled Node Type:
+						span.disabled= type
 					else
 						button(data-type='endpoint').create Endpoint
 						button(data-type='junction').create Junction
@@ -47,26 +48,31 @@ html(lang="en")
 						button(id='delete') Delete
 
 		if id
-			#connections
-				each connection, target in connections
-					.connection
-						=graph[target].name
-						button(data-from=target,data-to=id).deleteConnection Delete
-				
-				form(id='connform')
-					input(type='hidden', name='from', value=id)
-					.formLine
-						label(for='to') Target:
-						select(name='to')
-							each node, nid in graph
-								if (type=='junction' || node.type=='junction') && (node.pos[2] == floor) && (node.type == 'junction' || node.type=='endpoint') && (nid != id)
-									option(value=nid)=node.name
-					.formLine
-						label(for='fromDesc') Target to POI:
-						input(name='fromDesc')
-					.formLine
-						label(for='toDesc') POI to Target:
-						input(name='toDesc')
-					button(id='addcon') Add Connection
+			#connections.forms
+				.addDelete
+					h3 Delete a connection
+					ul
+						each connection, target in connections
+							li.connection
+								button(data-from=target,data-to=id).deleteConnection Delete
+								=graph[target].name
+
+				.addDelete
+					h3 Add a new connection
+					form(id='connform')
+						input(type='hidden', name='from', value=id)
+						.formLine
+							label(for='to') Target:
+							select(name='to')
+								each node, nid in graph
+									if (type=='junction' || node.type=='junction') && (node.pos[2] == floor) && (node.type == 'junction' || node.type=='endpoint') && (nid != id)
+										option(value=nid)=node.name
+						.formLine
+							label(for='fromDesc') Target to POI:
+							input(name='fromDesc')
+						.formLine
+							label(for='toDesc') POI to Target:
+							input(name='toDesc')
+						button(id='addcon') Add Connection
 
 		script(type='text/javascript', src='/js/addNodeForm.js')

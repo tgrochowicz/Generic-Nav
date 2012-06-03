@@ -26,9 +26,8 @@ $(function(){
 
 	$('#find').bind('click', function()
 	{
-		var to = $('option:selected').attr('id');
 		var from = $('#node').attr('content');
-		window.location.href = '/route/' + from + '/' + to;
+		window.location.href = '/route/' + from;
 	});
 });
 

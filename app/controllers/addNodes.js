@@ -18,7 +18,10 @@ function addNodeHandler(req, res) {
 		id = req.body.id,
 		pos = [parseInt(req.body.posx), parseInt(req.body.posy), parseInt(req.body.floor)];
 
+	console.log(req.body);
+
 	if(!type || !name || !id) {
+		console.log('missing');
 		res.send('missing parameters');
 		return
 	}
@@ -28,6 +31,7 @@ function addNodeHandler(req, res) {
 			console.log(error);
 			res.send("Not ok!");
 		} else {
+			console.log('added node');
 			res.send("ok");
 		}
 	});

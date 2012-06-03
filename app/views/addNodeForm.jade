@@ -2,17 +2,23 @@
 html(lang="en")
 	include head
 	body
-		form
-			input(type='hidden', name='x', value=x)
-			input(type='hidden', name='y', value=y)
+		form(id='form')
+			input(type='hidden', name='posx', value=x)
+			input(type='hidden', name='posy', value=y)
 			input(type='hidden', name='floor', value=floor)
 
+			label(for='id') ID:
+			input(id='id', name='id')= id
+
 			label(for='name') Name:
-			input(id='name')
+			input(id='name', name='name')
 			label(for='type') Type:
-			select(id='type')
-				option(id='endpoint') Endpoint
-				option(id='junction') Junction
+			select(id='type', name='type')
+				option(value='endpoint') Endpoint
+				option(value='junction') Junction
 			button(id='save') Save
+
+			if id
+				button(id='delete') Delete
 
 		script(type='text/javascript', src='/js/addNodeForm.js')

@@ -1,3 +1,7 @@
+function closeFancybox(){
+    $.fancybox.close();
+}
+
 (function($){
 	$(".fancybox").fancybox();
 

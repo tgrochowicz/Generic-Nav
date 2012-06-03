@@ -113,6 +113,14 @@ function deleteNode(id, callback) {
 	var place;
 	if (id in nodes.junctions) {
 		place = nodes.junctions
+		for (to in place[id].connections) {
+			deleteConnection(from, to, function(errors) {
+				if (errors) {
+					callback("error deleting connections")
+					return;
+				}
+			})
+		}
 	} else if (id in nodes.endpoints) {
 		place = nodes.endpoints
 	} else {

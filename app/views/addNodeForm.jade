@@ -1,0 +1,18 @@
+!!!
+html(lang="en")
+	include head
+	body
+		form
+			input(type='hidden', name='x', value=x)
+			input(type='hidden', name='y', value=y)
+			input(type='hidden', name='floor', value=floor)
+
+			label(for='name') Name:
+			input(id='name')
+			label(for='type') Type:
+			select(id='type')
+				option(id='endpoint') Endpoint
+				option(id='junction') Junction
+			button(id='save') Save
+
+		script(type='text/javascript', src='/js/addNodeForm.js')

@@ -5,7 +5,9 @@ exports.setup = function(app){
 		res.render('index');
 	});
 
-	require('./controllers/addNodes').bind(app);
+	require('./controllers/addNodes').bind(app)
+
+	require('./controllers/forms').bind(app)
 
 	app.get('/graph', require('./controllers/graph').go)
 

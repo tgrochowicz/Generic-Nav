@@ -87,8 +87,7 @@ function launchNodeScreen(node)
 		//$.fancybox({href: faaaancyurl, type:'iframe', onClose: refreshNodes(floor)});
 	}
 
-
-	$("#FloorPlan").bind('click', addNewNode)
+	$("#floorcanvas").bind('click', addNewNode)
 
 	$('.floorbtn').bind('click', function(){
 		$('.floorbtn').removeClass('active');

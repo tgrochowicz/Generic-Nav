@@ -47,6 +47,12 @@ html.no-hs(lang="en")
 								li.expandee
 									a(href= '/route/' + from.id + '/' + item.id)= item.name
 					li.expando
+						div.findCategory Food
+						ul.hidden
+							for item in nodes.food
+								li.expandee
+									a(href= '/route/' + from.id + '/' + item.id)= item.name
+					li.expando
 						div.findCategory Misc.
 						ul.hidden
 							for item in nodes.etc

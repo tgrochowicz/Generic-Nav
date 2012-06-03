@@ -8,7 +8,7 @@
 			filename = "/images/" + $this.attr('data-bg'),
 			context,
 			scale = 1,
-			minwidth = 300,
+			minwidth = 240,
 			maxwidth = 600,
 			minheight = 100,
 			maxheight = 600,

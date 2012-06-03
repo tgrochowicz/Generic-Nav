@@ -259,7 +259,7 @@ function generateDirections(path) {
 	return directions;	
 }
 
-function getRoute (from, to) {
+function getBestPath (from, to) {
 	var paths = [
 			{
 				'dist': 0,
@@ -267,8 +267,7 @@ function getRoute (from, to) {
 				'tbt': []
 			}
 		],
-		bestPath,
-		output;
+		bestPath;
 
 	while (!bestPath && paths.length) {
 		paths = addMorePaths(paths, to);
@@ -284,7 +283,12 @@ function getRoute (from, to) {
 				}
 			} 
 		}
-	}
+	}	
+	return bestPath;
+}
+
+function getRoute (from, to) {
+	var bestPath = getBestPath(from, to);
 	if (bestPath != undefined) {
 		output = generateDirections(bestPath);
 	}
@@ -295,6 +299,8 @@ loadNodes();
 parseNodes();
 
 exports.getRoute = getRoute;
+exports.getBestPath = getBestPath;
+exports.generateDirections = generateDirections;
 exports.addNode = addNode;
 exports.deleteNode = deleteNode;
 exports.addConnection = addConnection;

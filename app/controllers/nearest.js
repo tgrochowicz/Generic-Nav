@@ -21,16 +21,16 @@ exports.go = function(req, res) {
 
 		if (node.locationType == type) {
 			console.log("correct type, navigating")
-			attempt = mapping.getRoute(from, node)
+			attempt = mapping.getBestPath(from, node)
 			console.log(attempt)
-			if (!best || best.dist < attempt.dist) {
+			if (!best || best.dist > attempt.dist) {
 				best = attempt
 			}
 		}
 	}
 
 	if (best) {
-		res.render('route', {'waypoints': best})
+		res.render('route', {'waypoints': mapping.generateDirections(best)})
 	} else {
 		console.log('no valid route');
 		res.render('noroute');

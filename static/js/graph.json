@@ -1253,6 +1253,18 @@
          "type": "junction",
          "locationType": "amenities",
          "connections": {}
+      },
+      "9e490fab-600a-4918-b0c5-462978838dc2": {
+         "id": "9e490fab-600a-4918-b0c5-462978838dc2",
+         "name": "Null Node 2",
+         "pos": [
+            247,
+            162,
+            0
+         ],
+         "type": "junction",
+         "locationType": "amenities",
+         "connections": {}
       }
    },
    "elevators": {
@@ -1287,7 +1299,7 @@
             0
          ],
          "exits": [
-            "e19dee14-bbd0-4966-bcae-36b57a74eec5",
+            "9e490fab-600a-4918-b0c5-462978838dc2",
             "89482dd1-5cf6-42aa-8675-b321ae542c45",
             "411fa034-ac7c-4e5e-a29f-616b5cb897c7"
          ]

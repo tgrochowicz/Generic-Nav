@@ -2,25 +2,29 @@
 html(lang="en")
 	include head
 	body
-		h2 Add Point of Interest
-		form(id='form')
-			input(type='hidden', name='posx', value=x)
-			input(type='hidden', name='posy', value=y)
-			input(type='hidden', name='floor', value=floor)
+		#addNodeForm.forms
+			h2 Add Point of Interest
+			form(id='form')
+				input(type='hidden', name='posx', value=x)
+				input(type='hidden', name='posy', value=y)
+				input(type='hidden', name='floor', value=floor)
 
-			label(for='id') Unique ID:
-			input(id='id', name='id', disabled='true')= id
+				.formLine
+					label(for='id').disabled Unique ID:
+					input(id='id', name='id', disabled='true')= id
+				.formLine
+					label(for='name') Name of point:
+					input(id='name', name='name')
+				.formLine
+					label(for='type') Type:
+					select(id='type', name='type')
+						option(value='endpoint') Endpoint
+						option(value='junction') Junction
+				.formButtons
+					button(id='save') Save
+					button(id='cancel') Cancel
 
-			label(for='name') Name:
-			input(id='name', name='name')
-			label(for='type') Type:
-			select(id='type', name='type')
-				option(value='endpoint') Endpoint
-				option(value='junction') Junction
-			button(id='save') Save
-			button(id='cancel') Cancel
-
-			if id
-				button(id='delete') Delete
+				if id
+					button(id='delete') Delete
 
 		script(type='text/javascript', src='/js/addNodeForm.js')

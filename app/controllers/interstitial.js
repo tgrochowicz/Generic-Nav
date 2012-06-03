@@ -6,13 +6,15 @@ exports.go = function(req, res) {
 	from = graph[from];
 	delete graph[from];
 	//separate into location types
-	var graph_data = { conference: {}, patientroom: {}, lounge: {}, entrance: {}, etc: {}}
+	var graph_data = { conference: {}, patientroom: {}, lounge: {}, entrance: {}, etc: {}, food: {}, atm: {}, restroom: {}, nurse: {}}
 	for(var node in graph){
-		var loc = node.locationType;
-		if(!graph_data[loc]){
+		var loc = graph[node].locationType;
+		if(typeof loc === undefined || !graph_data[loc]){
 			loc = 'etc';
 		}
-		graph_data[loc][node] = graph[node];
+
+		if(graph[node].type !== 'junction' && graph[node].type !== 'elevator')
+			graph_data[loc][node] = graph[node];
 	}
 	console.log(graph_data)
 

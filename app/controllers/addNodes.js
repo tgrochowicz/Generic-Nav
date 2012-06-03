@@ -76,10 +76,30 @@ function deleteNodeHandler(req, res) {
 	});
 }
 
+function deleteConnectionHandler(req, res) {
+	var from = req.body.from,
+		to = req.body.to;
+
+	if (!from || !to) {
+		res.send("missing params");
+		return;
+	}
+
+	mapping.deleteConnection(from, to, function(error) {
+		if (error) {
+			console.log(error);
+			res.send("Not OK!");
+		} else {
+			res.send('ok');
+		}
+	});
+}
+
 exports.bind = function(app) {
 	app.get('/addnodes', pageHandler);
 	app.get('/getnodes', getNodesHandler);
 	app.post('/addnode', addNodeHandler);
 	app.post('/deletenode', deleteNodeHandler);
 	app.post('/addconnection', addConnectionHandler);
+	app.post('/deleteconnection', deleteConnectionHandler);
 }

@@ -141,6 +141,23 @@ function addConnection(from, to, fromDesc, toDesc, callback) {
 	dumpNodes(callback);
 }
 
+function deleteConnection(from, to, callback){
+	from = graph[from];
+	to = graph[to];
+	if (!from || !to) {
+		callback("Couldn't find from/to pair")
+		return
+	}
+	if (from.type === 'junction') {
+		delete nodes.junctions[from.id].connections[to.id];
+	}
+	if (to.type === 'junction') {
+		delete nodes.junctions[to.id].connections[from.id];
+	}
+	parseNodes();
+	dumpNodes(callback);
+}
+
 function addToPath(path, name, connection) {
 	var newRoute = path.route.slice(0),
 		newTbt = path.tbt.slice(0);
@@ -271,3 +288,4 @@ exports.getRoute = getRoute;
 exports.addNode = addNode;
 exports.deleteNode = deleteNode;
 exports.addConnection = addConnection;
+exports.deleteConnection = deleteConnection;

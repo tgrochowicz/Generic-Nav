@@ -123,6 +123,24 @@ function deleteNode(name, callback) {
 	dumpNodes(callback)
 }
 
+function addConnection(from, to, fromDesc, toDesc, callback) {
+	from = graph[from];
+	to = graph[to];
+	if (!from || !to) {
+		callback("Couldn't find from/to pair")
+		return
+	}
+
+	if (from.type === 'junction') {
+		nodes.junctions[from.id].connections[to.id] = [toDesc, fromDesc];
+	}
+	if (to.type === 'junction') {
+		nodes.junctions[to.id].connections[from.id] = [fromDesc, toDesc];
+	}
+	parseNodes();
+	dumpNodes(callback);
+}
+
 function addToPath(path, name, connection) {
 	var newRoute = path.route.slice(0),
 		newTbt = path.tbt.slice(0);
@@ -250,12 +268,12 @@ function getRoute (from, to) {
 	{
 		var floors = [];
 		for(var i = 0; i < routes.length; i++){
-				if(!floors[routes[i].floor]){
-				var floor = {
-					id: routes[i].floor,
-					img: '/images/map_level' + (routes[i].floor + 1) + '.jpg'
-				}
-				floors[floor.id] = floor;
+			var floor = {
+				id: routes[i].floor,
+				img: '/images/map_level' + (routes[i].floor + 1) + '.jpg'
+			}
+			if (floors.length == 0 || floors[floors.length - 1].id != floor.id) {
+				floors.push(floor)
 			}
 		}
 		return floors;
@@ -264,6 +282,7 @@ function getRoute (from, to) {
 		bestPath.routes = generateRoutes(bestPath.route);
 		bestPath.floors = generateFloors(bestPath.routes);
 	}
+	console.log(bestPath)
 	return bestPath;
 }
 
@@ -273,3 +292,4 @@ parseNodes();
 exports.getRoute = getRoute;
 exports.addNode = addNode;
 exports.deleteNode = deleteNode;
+exports.addConnection = addConnection;

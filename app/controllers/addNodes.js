@@ -19,11 +19,32 @@ function addNodeHandler(req, res) {
 		pos = [parseInt(req.body.posx), parseInt(req.body.posy), parseInt(req.body.floor)];
 
 	if(!type || !name || !id) {
-		res.send('missing parameters')
+		res.send('missing parameters');
 		return
 	}
 
 	mapping.addNode(type, id, name, pos, function(error) {
+		if (error) {
+			console.log(error);
+			res.send("Not ok!");
+		} else {
+			res.send("ok");
+		}
+	});
+}
+
+function addConnectionHandler(req, res) {
+	var from = req.body.from,
+		to = req.body.to,
+		fromDesc = req.body.fromDesc,
+		toDesc = req.body.toDesc;
+
+	if (!from || !to || !fromDesc || !toDesc) {
+		res.send("missing parameters");
+		return;
+	}
+
+	mapping.addConnection(from, to, fromDesc, toDesc, function(error) {
 		if (error) {
 			console.log(error);
 			res.send("Not ok!");
@@ -38,7 +59,7 @@ function deleteNodeHandler(req, res) {
 
 	if (!name) {
 		res.send('missing name');
-		return
+		return;
 	}
 
 	mapping.deleteNode(name, function(error) {
@@ -56,4 +77,5 @@ exports.bind = function(app) {
 	app.get('/getnodes', getNodesHandler);
 	app.post('/addnode', addNodeHandler);
 	app.post('/deletenode', deleteNodeHandler);
+	app.post('/addconnection', addConnectionHandler);
 }

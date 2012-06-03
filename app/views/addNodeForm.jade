@@ -11,20 +11,30 @@ html(lang="en")
 
 				.formLine
 					label(for='id').disabled Unique ID:
-					input(id='id', name='id', disabled='true')= id
+					input(id='id', name='id', readonly='readonly', value=id).disabled
 				.formLine
 					label(for='name') Name of point:
-					input(id='name', name='name')
+					input(id='name', name='name', value=name)
 				.formLine
 					label(for='type') Type:
-					select(id='type', name='type')
-						option(value='endpoint') Endpoint
-						option(value='junction') Junction
+					if type
+						span= type
+						input(type='hidden', name='type', value=type)
+					else
+						select(id='type', name='type')
+							option(value='endpoint') Endpoint
+							option(value='junction') Junction
 				.formButtons
 					button(id='save') Save
 					button(id='cancel') Cancel
 
 				if id
 					button(id='delete') Delete
+
+		#connections
+			each connection in connections
+				.connection
+					=connection.name
+					
 
 		script(type='text/javascript', src='/js/addNodeForm.js')

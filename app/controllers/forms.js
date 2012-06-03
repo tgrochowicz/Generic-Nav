@@ -2,17 +2,20 @@ var mapping = require('../mapping')
 var url = require('url')
 
 function addNodeFormHandler(req, res) {
-	var url_parts = url.parse(req.url, true);
-	var query = url_parts.query;
-	console.log(query);
-	var params = {
-		'x' : query.x,
-		'y' : query.y,
-		'floor' : query.z,
-		'floors' : mapping.floors,
-		'graph': mapping.graph,
-		'id': query.id || null,
-		'name': query.name}
+	var id = req.query['id'] || null,
+		node = id ? mapping.graph[id] : null,
+		params = {
+			'x' : req.query['x'],
+			'y' : req.query['y'],
+			'floor' : req.query['z'],
+			'floors' : mapping.floors,
+			'graph': mapping.graph,
+			'id': id,
+			'name': node ? node.name : '',
+			'type': node ? node.type : null,
+			'connections': node ? node.connections : []
+		};
+	console.log("id", id)
 	res.render('addNodeForm', params);
 }
 

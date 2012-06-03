@@ -109,9 +109,12 @@ function addNode(type, id, name, pos, callback) {
 
 function deleteNode(id, callback) {
 	var place;
-	if (id in nodes.junctions) {
+	console.log(id)
+	console.log(nodes.junctions)
+	console.log(nodes.endpoints)
+	if (graph[id] in nodes.junctions) {
 		place = nodes.junctions
-	} else if (id in nodes.endpoints) {
+	} else if (graph[id] in nodes.endpoints) {
 		place = nodes.endpoints
 	} else {
 		callback("not found")

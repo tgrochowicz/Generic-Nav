@@ -29,10 +29,7 @@ function refreshNodes(floor){
 				node.posX = node.pos[0];
 				node.posY = node.pos[1];
 				node.floor = node.pos[2];
-
-
 				launchNodeScreen(node);
-
 			});
 		}
 		function processNodes(nodepoint){
@@ -43,7 +40,6 @@ function refreshNodes(floor){
 				}
 			}
 		}
-		console.log(response);
 		processNodes(response.endpoints);
 		processNodes(response.junctions);
 	}
@@ -59,7 +55,6 @@ function launchNodeScreen(node)
 {
 	var url = '/addNodeForm?x=' + node.posX + '&y=' + node.posY + '&z=' + node.floor
 	if (node.id !== null)	url += '&id=' +  node.id;
-	if (node.name !== null)	url += '&name=' +  node.name;
 
 	$.fancybox({href: url, type:'iframe', onClose: refreshNodes(node.floor)});
 };

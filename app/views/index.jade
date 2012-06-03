@@ -7,4 +7,9 @@ html(lang="en")
 		.contentRepeat
 			.content
 				h1  Welcome to Dell Childrens' Hospital
+				p Select a node:
+				ul
+					each node in nodes.endpoints
+						li
+							a(href='/node/' + node.id)= node.name
 			include footer

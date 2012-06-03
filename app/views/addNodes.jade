@@ -1,0 +1,26 @@
+!!!
+html(lang="en")
+	include head
+	body
+		include header
+			include navigation
+		.contentRepeat
+			.content
+				h1  Welcome to Dell Childrens' Hospital
+
+				p Select a floor:
+					select(id="floorSelect")
+						option(value=-1)
+						each info, num in floors
+							option(value=num)#{info.description}
+
+				each info, num in floors
+					p
+						img(id="Floor" + num,src="/images/"+info.image).hidden.floorplan
+
+			a(href= '/images/map_level1.jpg').fancybox Test
+
+			script(type="text/javascript", src="/js/lib/jquery.fancybox.js")
+			script(type="text/javascript", src="/js/addNodes.js")
+
+			link(rel="stylesheet", href="/css/jquery.fancybox.css")

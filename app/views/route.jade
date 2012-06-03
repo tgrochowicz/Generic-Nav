@@ -1,12 +1,19 @@
 !!!
 html.no-hs(lang="en")
 	include head
-		script(type="text/javascript", src="/js/poster.js")
+	script(type="text/javascript", src="/js/route.js")
 	body
 		include header
 			include navigation
 		.contentRepeat
 			.content
 				h2 Here are your directions!
-				div(id= 'map')
+
+			each floor in waypoints
+				h3= floor.floor.description
+
+				ul
+					each step in floor.tbt
+						if step
+							li=step
 			include footer

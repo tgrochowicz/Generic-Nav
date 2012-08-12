@@ -8,9 +8,9 @@ exports.boot = function (app) {
 
 
         //Import global settings
-        var config = require("./options.json");
-        for(var prop in config){
-            app.set(prop, config[prop]);
+        var customization = require("./customization.json");
+        for(var prop in customization){
+            app.set(prop, customization[prop]);
         }
 
         app.set('view options', { layout: false });
@@ -21,6 +21,26 @@ exports.boot = function (app) {
 		app.use(app.router);
 		app.use(express.static(__dirname + "/../static/"));
 		app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+
+        var mongo = require('mongodb'),
+        Server = mongo.Server,
+        Db = mongo.Db;
+
+        var config = require("./config.json");
+        var server = new Server(config.mongoHost, config.mongoPort, {auto_reconnect: true});
+
+        var db = new Db(config.mongoDBName, server);
+
+        db.open(function(err, p_db) {
+            if(!err) {
+                console.log("connected to mongo");
+            }
+            else{
+                throw "Unable to connect to mongo.";
+            }
+
+        });
+
 
 	});
 };

@@ -30,7 +30,7 @@ if __name__ == '__main__':
     nodes = json.load(nodes_data)
     nodes_data.close()
 
-    collection = db['nodes']
+    collection = db['endpoints']
     collection.remove({})
     for endpoint in nodes['endpoints']:
         collection.insert(nodes['endpoints'][endpoint])

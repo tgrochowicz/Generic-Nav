@@ -1,6 +1,8 @@
 var mapping = require('../mapping'),
 	fs = require('fs');
 
+require('../data')
+
 function pageHandler(req, res) {
 	var params = {
 		'floors' : mapping.floors,
@@ -9,7 +11,9 @@ function pageHandler(req, res) {
 }
 
 function getNodesHandler(req, res) {
-	res.send(JSON.stringify(mapping.nodes, null, '   '));
+    Data.getAll(function(nodes){
+        res.send(JSON.stringify(nodes, null, '   '));
+    })
 }
 
 function addNodeHandler(req, res) {
@@ -27,7 +31,7 @@ function addNodeHandler(req, res) {
 		return
 	}
 
-	mapping.addNode(type, id, name, pos, locationType, function(error) {
+	Data.addNode(type, id, name, pos, locationType, function(error) {
 		if (error) {
 			console.log(error);
 			res.send("Not ok!");
@@ -69,15 +73,14 @@ function deleteNodeHandler(req, res) {
 		res.send('missing id');
 		return;
 	}
-
-	mapping.deleteNode(id, function(error) {
-		if (error) {
+    Data.deleteNode({'id':id}, function(error){
+        if (error) {
 			console.log(error);
 			res.send("Not OK!");
 		} else {
 			res.send('ok');
 		}
-	});
+    })
 }
 
 function deleteConnectionHandler(req, res) {

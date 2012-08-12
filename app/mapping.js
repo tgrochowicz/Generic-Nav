@@ -3,6 +3,11 @@ var fs = require('fs'),
 	graph = {},
 	floors = [];
 
+var async = require('async');
+
+require('./data.js')
+
+
 function calcDist(a, b) {
 	if (a.type === "elevator" || b.type === "elevator") {
 		return 10000;

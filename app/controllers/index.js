@@ -1,11 +1,14 @@
-var mapping = require('../mapping');
+require('../data');
 
 exports.bind = function(app){
 	app.get('/', function(req, res) {
 		if (req.session.kiosk) {
 			res.redirect('/node/' + req.session.kiosk);
 		} else {
-			res.render('index', {'nodes': mapping.nodes});
+            Data.getAll(function(nodes){
+                res.render('index', {'nodes': nodes});
+            })
+
 		}
 	});
 

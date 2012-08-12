@@ -1,7 +1,7 @@
-Dell Children's Hospital - Navigation
+Generic - Navigation
 =======
 
-Dell Children's Hospital Navigation Project, RHoK Austin 2012
+Generic version of the Dell Children's Hospital Navigation Project, RHoK Austin 2012
 
 Team
 ----
@@ -16,4 +16,3 @@ Installation
 2. Clone this repo locally
 3. Run `npm install -d` in the root directory to install requirements
 4. Run `node app` in the root directory to run the server
-5. RHoK and Roll!

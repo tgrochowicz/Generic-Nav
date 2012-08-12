@@ -4,4 +4,5 @@ var express = require("express");
 var app = express();
 require("./app/settings").boot(app);
 require("./app/router").setup(app);
+
 app.listen(10101);

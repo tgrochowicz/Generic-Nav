@@ -5,7 +5,15 @@ exports.boot = function (app) {
 	app.configure(function () {
 		app.set("views", __dirname + "/views");
 		app.set("view engine", "jade");
-		app.set("view options", {"layout": false});
+
+
+        //Import global settings
+        var config = require("./options.json");
+        for(var prop in config){
+            app.set(prop, config[prop]);
+        }
+
+        app.set('view options', { layout: false });
 		app.use(express.bodyParser());
 		app.use(express.methodOverride());
 		app.use(express.cookieParser());
@@ -13,5 +21,6 @@ exports.boot = function (app) {
 		app.use(app.router);
 		app.use(express.static(__dirname + "/../static/"));
 		app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+
 	});
 };

@@ -1,5 +1,8 @@
 Collection of tools useful in building/testing the application
+=======
 
 set_default_nodes.py
+-------
+Requirements: pymongo
 
-Seed the mongo database with the default included nodes, routes, waypoints, and floors.
+Seeds the mongo database with the default included nodes, routes, waypoints, and floors.
